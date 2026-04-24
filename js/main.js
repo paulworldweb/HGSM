@@ -65,17 +65,17 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
     },
     {
-      youtubeId: "xQCk-gEo02s,
+      youtubeId: "xQCk-gEo02s",
       category: "Prayer",
       title: "Breaking Curses",
       description: "Part 3.",
-      thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/vi/xQCk-gEo02s/hqdefault.jpg"
     },
-    youtubeId: "42Rl0uTWB6A,
+    youtubeId: "42Rl0uTWB6A",
       category: "Prayer",
       title: "Breaking Curses",
       description: "Part 3.",
-      thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/vi/42Rl0uTWB6A/hqdefault.jpg"
     }
   ];
 
