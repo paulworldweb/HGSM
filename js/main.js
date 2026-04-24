@@ -67,14 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       youtubeId: "xQCk-gEo02s",
       category: "Prayer",
-      title: "Breaking Curses",
-      description: "Part 3.",
+      title: "31 Day Prayer Marathon | Day 31 (Midnight prayer)",
+      description: "Day 1.",
       thumbnail: "https://img.youtube.com/vi/xQCk-gEo02s/hqdefault.jpg"
+    {
     },
-    youtubeId: "42Rl0uTWB6A",
+      youtubeId: "42Rl0uTWB6A",
       category: "Prayer",
-      title: "Breaking Curses",
-      description: "Part 3.",
+      title: "31 Day Prayer Marathon | Day 31 (Midnight prayer)",
+      description: "Day 2.",
       thumbnail: "https://img.youtube.com/vi/42Rl0uTWB6A/hqdefault.jpg"
     }
   ];
