@@ -63,6 +63,19 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Breaking Curses",
       description: "Part 3.",
       thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
+    },
+    {
+      youtubeId: "xQCk-gEo02s,
+      category: "Prayer",
+      title: "Breaking Curses",
+      description: "Part 3.",
+      thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
+    },
+    youtubeId: "42Rl0uTWB6A,
+      category: "Prayer",
+      title: "Breaking Curses",
+      description: "Part 3.",
+      thumbnail: "https://img.youtube.com/vi/84KZ9XlDFqw/hqdefault.jpg"
     }
   ];
 
