@@ -1,7 +1,7 @@
 @import url("style.css");
 
 /* =========================
-   DONATION PAGE ONLY
+   DONATE PAGE ONLY
 ========================= */
 
 .donation-hero {
@@ -23,6 +23,7 @@
   margin: 0 auto;
   color: #334155;
   font-size: 1.1rem;
+  line-height: 1.7;
 }
 
 .donation-divider {
@@ -44,6 +45,10 @@
   color: var(--gold);
   font-size: 1.4rem;
 }
+
+/* =========================
+   MAIN DONATION LAYOUT
+========================= */
 
 .donation-section {
   background: var(--bg-light);
@@ -96,12 +101,17 @@
   font-weight: 700;
   padding: 16px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
 .donate-btn:hover {
   background: #b98d25;
+  transform: translateY(-1px);
 }
+
+/* =========================
+   SIDE INFO CARD
+========================= */
 
 .giving-info-card {
   padding: 34px 26px;
@@ -109,27 +119,35 @@
   min-height: 100%;
 }
 
+.giving-icon {
+  font-size: 2.8rem;
+  margin-bottom: 16px;
+}
+
+.giving-info-card h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  color: var(--blue);
+  margin-bottom: 18px;
+}
+
 .giving-info-card p {
   color: #374151;
   font-size: 1rem;
   margin-bottom: 24px;
+  line-height: 1.7;
 }
 
-.giving-info-card h2 {
-  font-size: 2.4rem;
-  line-height: 1.15;
-}
-
-.giving-options-section {
-  background: var(--bg-light);
-  padding: 10px 0 34px;
-}
+/* =========================
+   OPTIONAL GIVING
+========================= */
 
 .section-heading {
   display: flex;
   align-items: center;
   gap: 16px;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
 
 .section-heading h2 {
@@ -141,114 +159,20 @@
 
 .section-heading p {
   color: var(--muted);
+  line-height: 1.6;
 }
 
 .section-icon {
   font-size: 2.2rem;
   color: var(--gold);
+  flex-shrink: 0;
 }
 
 .giving-options-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
-}
-
-.giving-option-card {
-  background: var(--white);
-  border: 1px solid #b9c4d7;
-  border-radius: 14px;
-  padding: 22px 18px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: var(--shadow);
-}
-
-.radio-circle {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #8b96aa;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.option-icon {
-  font-size: 2.2rem;
-  color: var(--blue);
-}
-
-.option-text h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.2rem;
-  margin-bottom: 4px;
-  color: var(--text);
-}
-
-.option-text p {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-.payment-section {
-  background: var(--bg-light);
-  padding: 0 0 42px;
-}
-
-.payment-card {
-  background: #eaf2fd;
-  border-radius: 14px;
-  padding: 24px 28px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-}
-
-.payment-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.payment-icon {
-  font-size: 2.2rem;
-  color: var(--blue);
-}
-
-.payment-left h2 {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.9rem;
-  color: var(--blue);
-}
-
-.payment-left p {
-  color: var(--muted);
-}
-
-.payment-right {
-  display: flex;
-  gap: 22px;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.payment-right span {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--blue);
-}
-
-@media (max-width: 980px) {
-  .donation-layout,
-  .giving-options-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .payment-card {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  margin-top: 16px;
 }
 
 .giving-option-card {
@@ -261,7 +185,7 @@
   gap: 16px;
   box-shadow: var(--shadow);
   cursor: pointer;
-  transition: 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .giving-option-card:hover {
@@ -298,17 +222,163 @@
   transform: translate(-50%, -50%);
 }
 
+.option-icon {
+  font-size: 2.2rem;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.option-text h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.option-text p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .giving-radio:checked ~ .option-text h3 {
   color: var(--blue);
 }
+
+/* =========================
+   PAYMENT SECTION
+========================= */
+
+.payment-section {
+  background: var(--bg-light);
+  padding: 0 0 42px;
+}
+
+.payment-card {
+  background: #eaf2fd;
+  border-radius: 14px;
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.payment-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.payment-icon {
+  font-size: 2.2rem;
+  color: var(--blue);
+}
+
+.payment-left h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.9rem;
+  color: var(--blue);
+  margin-bottom: 4px;
+}
+
+.payment-left p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.payment-right {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.payment-right span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+/* =========================
+   DONATE PAGE BRANDING POLISH
+========================= */
+
+.logo img {
+  height: 50px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.footer-brand img {
+  height: 42px;
+  width: auto;
+}
+
+.footer-brand span {
+  font-size: 1.05rem;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 980px) {
+  .donation-hero {
+    padding: 80px 0 60px;
+  }
+
+  .donation-layout,
+  .giving-options-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .giving-info-card h2 {
+    font-size: 2rem;
+  }
+
+  .payment-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+}
+
+/* =========================
+   PHONE
+========================= */
+
 @media (max-width: 700px) {
   .donation-hero {
-    padding: 50px 0 34px;
+    padding: 60px 0 45px;
+  }
+
+  .donation-hero-content h1 {
+    font-size: 2.4rem;
+  }
+
+  .logo img {
+    height: 42px;
+  }
+
+  .logo-text {
+    font-size: 0.82rem;
   }
 
   .donation-form-card,
   .giving-info-card {
     padding: 26px 20px 24px;
+  }
+
+  .donation-form-card {
+    padding-top: 30px;
   }
 
   .donation-label-box {
@@ -321,120 +391,8 @@
     align-items: flex-start;
   }
 
-  .payment-right span {
-    font-size: 1.5rem;
-  }
-}
-
-
-/* =========================
-   DONATE PAGE - FINAL POLISH
-========================= */
-
-/* Slightly reduce the hero height */
-.donation-hero {
-  background: var(--bg-soft);
-  padding: 90px 0 70px;
-  text-align: center;
-  border-bottom: 1px solid #ece3d2;
-}
-
-/* Slightly reduce logo size in header */
-.logo img {
-  height: 50px;
-  width: auto;
-}
-
-/* Keep the header text beside logo neat */
-.logo-text {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-/* Give the form card a little cleaner spacing */
-.donation-form-card {
-  padding: 42px 40px 40px;
-}
-
-/* Make the right-side encouragement card heading a little more balanced */
-.giving-info-card h2 {
-  font-size: 2.4rem;
-  line-height: 1.15;
-}
-
-/* Optional giving section spacing */
-.giving-options-grid {
-  margin-top: 16px;
-  gap: 18px;
-}
-
-/* Make giving option text a little easier to read */
-.option-text h3 {
-  font-size: 1.15rem;
-  line-height: 1.3;
-  margin-bottom: 4px;
-}
-
-.option-text p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-/* Clean up payment section spacing */
-.payment-card {
-  padding: 28px 32px;
-}
-
-.payment-right {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-/* Footer logo polish */
-.footer-brand img {
-  height: 42px;
-  width: auto;
-}
-
-.footer-brand span {
-  font-size: 1.05rem;
-}
-
-/* Tablet */
-@media (max-width: 980px) {
-  .donation-hero {
-    padding: 80px 0 60px;
-  }
-
-  .giving-info-card h2 {
-    font-size: 2rem;
-  }
-
-  .payment-card {
-    padding: 24px 24px;
-  }
-}
-
-/* Phone */
-@media (max-width: 700px) {
-  .donation-hero {
-    padding: 60px 0 45px;
-  }
-
-  .logo img {
-    height: 42px;
-  }
-
-  .logo-text {
-    font-size: 0.82rem;
-  }
-
-  .donation-form-card {
-    padding: 30px 20px 28px;
+  .section-heading h2 {
+    font-size: 1.7rem;
   }
 
   .giving-info-card h2 {
@@ -448,5 +406,9 @@
   .payment-right {
     gap: 16px;
     justify-content: flex-start;
+  }
+
+  .payment-right span {
+    font-size: 1.5rem;
   }
 }
