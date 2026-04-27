@@ -246,6 +246,56 @@
   }
 }
 
+.giving-option-card {
+  background: var(--white);
+  border: 1px solid #b9c4d7;
+  border-radius: 14px;
+  padding: 22px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.giving-option-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.giving-radio {
+  display: none;
+}
+
+.radio-circle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #8b96aa;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.giving-radio:checked + .radio-circle {
+  border-color: var(--blue);
+}
+
+.giving-radio:checked + .radio-circle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.giving-radio:checked ~ .option-text h3 {
+  color: var(--blue);
+}
 @media (max-width: 700px) {
   .donation-hero {
     padding: 50px 0 34px;
