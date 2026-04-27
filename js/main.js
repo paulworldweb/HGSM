@@ -2,18 +2,39 @@ document.addEventListener("DOMContentLoaded", function () {
   // =========================
   // HAMBURGER MENU
   // =========================
-  const menuToggle = document.querySelector(".menu-toggle");
-  const siteNav = document.querySelector(".site-nav");
+const menuToggle = document.querySelector(".menu-toggle");
+const siteNav = document.querySelector(".site-nav");
 
-  if (menuToggle && siteNav) {
-    menuToggle.addEventListener("click", function () {
-      menuToggle.classList.toggle("active");
-      siteNav.classList.toggle("open");
+// Only run if both the hamburger button and menu exist
+if (menuToggle && siteNav) {
+  // When the hamburger is clicked
+  menuToggle.addEventListener("click", function (e) {
+    // Stop the click from bubbling up to the document
+    e.stopPropagation();
 
-      const expanded = menuToggle.classList.contains("active");
-      menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-    });
-  }
+    // Toggle hamburger into X
+    menuToggle.classList.toggle("active");
+
+    // Show or hide the menu
+    siteNav.classList.toggle("open");
+
+    // Update accessibility state
+    const expanded = menuToggle.classList.contains("active");
+    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+  });
+
+  // Prevent clicks inside the menu from closing it immediately
+  siteNav.addEventListener("click", function (e) {
+    e.stopPropagation();
+  });
+
+  // Close menu when user clicks anywhere outside it
+  document.addEventListener("click", function () {
+    siteNav.classList.remove("open");
+    menuToggle.classList.remove("active");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+}
 
   // =========================
   // VIDEO PAGE ELEMENTS
