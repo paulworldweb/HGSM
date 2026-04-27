@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/vsiOfyok3Aw/hqdefault.jpg"
     },
     {
-      youtubeId: "YzIuG9J11Rc",
+      youtubeId: "WG3JX4plQ6Y",
       category: "Sermon",
-      title: "The reason you're alone",
+      title: "The God who turns things around is visiting you today.",
       description: "Important Message.",
-      thumbnail: "https://img.youtube.com/YzIuG9J11Rc/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/WG3JX4plQ6Y/hqdefault.jpg"
     },
 
     {
