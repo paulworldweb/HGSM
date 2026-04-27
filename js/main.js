@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/vsiOfyok3Aw/hqdefault.jpg"
     },
     {
-      youtubeId: "WG3JX4plQ6Y",
+      youtubeId: "bFdBXc2ZG3o",
       category: "Sermon",
-      title: "The God who turns things around is visiting you today.",
+      title: "This week your prayer will be answered.",
       description: "Important Message.",
-      thumbnail: "https://img.youtube.com/vi/WG3JX4plQ6Y/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/vi/bFdBXc2ZG3o/hqdefault.jpg"
     },
 
     {
