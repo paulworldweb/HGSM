@@ -18,6 +18,10 @@
   --bg-light: #f6f7fa;
   --bg-soft: #f8f3e8;
   --border: #d8deea;
+  --shadow: 0 10px 24px rgba(28, 35, 56, 0.08);
+  --radius: 16px;
+  --card-bg: #f8faff;
+  --container: min(1180px, calc(100% - 80px));
 }
 
 html {
@@ -42,7 +46,7 @@ a {
 }
 
 .container {
-  width: min(1180px, calc(100% - 80px));
+  width: var(--container);
   margin: 0 auto;
 }
 
@@ -109,7 +113,6 @@ header {
   position: sticky;
   top: 0;
   z-index: 1000;
-  border-bottom: none;
 }
 
 .nav-bar {
@@ -165,7 +168,6 @@ header {
 .site-nav a.active {
   color: #d9dfeb;
 }
-
 
 .site-nav a:hover {
   color: var(--gold);
@@ -469,7 +471,7 @@ header {
 }
 
 /* =========================
-   ABOUT
+   ABOUT / CONTACT / PRAYER / EVENTS HERO
 ========================= */
 .about-hero,
 .contact-hero,
@@ -486,10 +488,13 @@ header {
 .prayer-hero-content,
 .events-hero-content,
 .videos-hero-content {
-  width: min(1180px, calc(100% - 80px));
+  width: var(--container);
   margin: 0 auto;
 }
 
+/* =========================
+   ABOUT
+========================= */
 .about-section {
   background: var(--white);
   padding: 60px 0;
@@ -570,7 +575,7 @@ header {
 }
 
 /* =========================
-   CONTACT
+   CONTACT / PRAYER / EVENTS / VIDEOS GRID BACKGROUND
 ========================= */
 .contact-section,
 .prayer-section,
@@ -733,80 +738,10 @@ header {
   align-items: center;
 }
 
-.video-category-section {
-  margin-bottom: 50px;
-}
-
-.category-heading {
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2rem;
-  color: var(--blue);
-  margin-bottom: 20px;
-  border-left: 5px solid var(--gold);
-  padding-left: 14px;
-}
-
-.videos-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-}
-
-.video-card {
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-card.video-hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 32px rgba(28, 35, 56, 0.16);
-}
-
-.video-card-content {
-  padding: 18px;
-}
-
-.video-card-content h3 {
-  font-size: 1.2rem;
-  margin-bottom: 8px;
-}
-
-.video-card-content p {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
-/* =========================
-   VIDEOS PAGE - CLEAN THUMBNAIL VERSION
-========================= */
-
-.videos-hero {
-  background: var(--bg-soft);
-  padding: 70px 0 40px;
-  border-bottom: 1px solid #ece3d2;
-}
-
-.videos-hero-content {
-  width: min(1180px, calc(100% - 80px));
-  margin: 0 auto;
-}
-
 .videos-hero-text {
   max-width: 900px;
   color: #334155;
   font-size: 1.08rem;
-}
-
-.featured-video-section {
-  background: var(--white);
-  padding: 60px 0 40px;
-}
-
-.featured-video-layout {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 32px;
-  align-items: center;
 }
 
 .featured-video-frame {
@@ -833,11 +768,6 @@ header {
 .featured-video-copy p {
   color: var(--muted);
   margin-bottom: 20px;
-}
-
-.videos-grid-section {
-  background: var(--bg-light);
-  padding: 40px 0 80px;
 }
 
 .video-category-section {
@@ -903,18 +833,6 @@ header {
   padding: 18px;
 }
 
-.video-category {
-  display: inline-block;
-  background: var(--gold-soft);
-  color: var(--gold);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  margin-bottom: 10px;
-}
-
 .thumbnail-card-content h3 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.2rem;
@@ -925,38 +843,6 @@ header {
 .thumbnail-card-content p {
   color: var(--muted);
   font-size: 0.95rem;
-}
-
-/* responsive */
-@media (max-width: 1100px) {
-  .thumbnail-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 900px) {
-  .featured-video-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .thumbnail-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .videos-hero {
-    padding: 50px 0 34px;
-  }
-
-  .thumbnail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-video-copy h2,
-  .category-heading {
-    font-size: 1.8rem;
-  }
 }
 
 /* =========================
@@ -1031,7 +917,7 @@ footer {
 }
 
 .footer-brand img {
-  height: 56px;
+  height: 50px;
   width: auto;
   display: block;
   background-color: #d9dfeb;
@@ -1042,166 +928,6 @@ footer {
   font-size: 0.95rem;
   color: #ffffff;
   font-weight: 600;
-}
-
-/* =========================
-   TABLET / MOBILE
-========================= */
-@media (max-width: 980px) {
-  .menu-toggle {
-    display: inline-flex;
-  }
-
-  .about-hero-content,
-  .contact-hero-content,
-  .prayer-hero-content,
-  .events-hero-content,
-  .videos-hero-content {
-    width: min(1180px, calc(100% - 32px));
-  }
-
-  .site-nav {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    width: min(320px, 92vw);
-    background: #ffffff;
-    border: 1px solid #ececec;
-    border-radius: 14px;
-    box-shadow: 0 14px 30px rgba(20, 32, 61, 0.12);
-    padding: 16px;
-    display: none;
-  }
-
-  .site-nav.open {
-    display: block;
-  }
-
-  .site-nav ul {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .site-nav a {
-    width: 100%;
-    padding: 8px 0;
-    color: #151c2e;
-    font-weight: 700;
-  }
-
-  .site-nav a.active {
-  color: #151c2e;
-}
-
-  .two-column,
-  .about-layout,
-  .about-cards-grid,
-  .contact-layout,
-  .prayer-layout,
-  .event-card,
-  .event-page-card,
-  .featured-video-layout,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .quick-grid,
-  .videos-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .event-image,
-  .event-page-image,
-  .about-image-card img {
-    min-height: 220px;
-    height: 220px;
-  }
-}
-
-@media (max-width: 700px) {
-  .nav-bar {
-    min-height: 84px;
-  }
-
-  .logo {
-    gap: 10px;
-  }
-
-  .logo img {
-    height: 48px;
-  }
-
-  .logo-text {
-    font-size: 0.88rem;
-    max-width: 150px;
-    line-height: 1.2;
-    white-space: normal;
-  }
-
-  .hero {
-    min-height: 380px;
-  }
-
-  .hero-content {
-    padding: 48px 0;
-  }
-
-  .hero h1 {
-    font-size: 2.4rem;
-  }
-
-  .button-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .btn {
-    width: 100%;
-  }
-
-  .quick-grid,
-  .videos-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .about-hero,
-  .contact-hero,
-  .prayer-hero,
-  .events-hero,
-  .videos-hero {
-    padding: 50px 0 34px;
-  }
-
-  .contact-form-card,
-  .prayer-form-card,
-  .contact-info-card,
-  .prayer-info-card {
-    padding: 26px 20px 24px;
-  }
-
-  .contact-label-box,
-  .prayer-label-box {
-    position: static;
-    display: inline-block;
-    margin-bottom: 18px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-
-  .featured-video-copy h2,
-  .category-heading,
-  .event-page-content h2,
-  .about-text-card h2,
-  .scripture-card h2 {
-    font-size: 1.8rem;
-  }
-
-  .scripture-text {
-    font-size: 1.2rem;
-  }
 }
 
 /* =========================
@@ -1288,20 +1014,192 @@ footer {
   line-height: 1;
 }
 
-/* responsive */
+/* =========================
+   TABLET / MOBILE
+========================= */
+@media (max-width: 1100px) {
+  .thumbnail-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 980px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .about-hero-content,
+  .contact-hero-content,
+  .prayer-hero-content,
+  .events-hero-content,
+  .videos-hero-content {
+    width: min(1180px, calc(100% - 32px));
+  }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: min(320px, 92vw);
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 14px;
+    box-shadow: 0 14px 30px rgba(20, 32, 61, 0.12);
+    padding: 16px;
+    display: none;
+    z-index: 1200;
+  }
+
+  .site-nav.open {
+    display: block;
+  }
+
+  .site-nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .site-nav a {
+    width: 100%;
+    padding: 8px 0;
+    color: #151c2e;
+    font-weight: 700;
+  }
+
+  .site-nav a.active {
+    color: #151c2e;
+  }
+
+  .two-column,
+  .about-layout,
+  .about-cards-grid,
+  .contact-layout,
+  .prayer-layout,
+  .event-card,
+  .event-page-card,
+  .featured-video-layout,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .event-image,
+  .event-page-image,
+  .about-image-card img {
+    min-height: 220px;
+    height: 220px;
+  }
+
+  .payment-right {
+    justify-content: flex-start;
+  }
+}
+
 @media (max-width: 900px) {
+  .featured-video-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .thumbnail-grid,
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 700px) {
+  .container {
+    width: min(1180px, calc(100% - 32px));
+  }
+
+  .nav-bar {
+    min-height: 84px;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .logo img,
+  .footer-brand img {
+    height: 42px;
+  }
+
+  .logo-text,
+  .footer-brand span {
+    font-size: 0.82rem;
+    max-width: 150px;
+    line-height: 1.2;
+    white-space: normal;
+  }
+
+  .hero {
+    min-height: 380px;
+  }
+
+  .hero-content {
+    padding: 48px 0;
+  }
+
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .quick-grid,
+  .thumbnail-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
   }
 
+  .about-hero,
+  .contact-hero,
+  .prayer-hero,
+  .events-hero,
+  .videos-hero {
+    padding: 50px 0 34px;
+  }
+
+  .contact-form-card,
+  .prayer-form-card,
+  .contact-info-card,
+  .prayer-info-card {
+    padding: 26px 20px 24px;
+  }
+
+  .contact-label-box,
+  .prayer-label-box {
+    position: static;
+    display: inline-block;
+    margin-bottom: 18px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-video-copy h2,
+  .category-heading,
+  .event-page-content h2,
+  .about-text-card h2,
+  .scripture-card h2,
   .gallery-title {
-    font-size: 1.9rem;
+    font-size: 1.8rem;
+  }
+
+  .scripture-text {
+    font-size: 1.2rem;
   }
 
   .gallery-card img {
@@ -1312,7 +1210,5 @@ footer {
     top: 12px;
     right: 20px;
     font-size: 2.4rem;
-  }
-}
   }
 }
