@@ -1238,6 +1238,7 @@ footer {
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(28, 35, 56, 0.08);
+  cursor: pointer;
 }
 
 .gallery-card img {
@@ -1252,6 +1253,42 @@ footer {
   transform: scale(1.04);
 }
 
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.lightbox.show {
+  display: flex;
+}
+
+.lightbox-img {
+  max-width: 90%;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 3rem;
+  color: #ffffff;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* responsive */
 @media (max-width: 900px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1269,5 +1306,13 @@ footer {
 
   .gallery-card img {
     height: 220px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 20px;
+    font-size: 2.4rem;
+  }
+}
   }
 }
