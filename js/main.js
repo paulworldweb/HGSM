@@ -110,40 +110,40 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/vsiOfyok3Aw/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_12",
+      youtubeId: "8uumrYIiC-c&t=82s",
       category: "Sermon",
-      title: "Sermon Video 4",
-      description: "Short description for sermon video 4.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_12/hqdefault.jpg"
+      title: "Why no Miracles in Churches today",
+      description: "Important Message.",
+      thumbnail: "https://img.youtube.com/8uumrYIiC-c&t=82s/hqdefault.jpg"
     },
 
     {
-      youtubeId: "VIDEO_ID_13",
+      youtubeId: "mB_ZrYX0C7c",
       category: "Teaching",
-      title: "Teaching Video 1",
-      description: "Short description for teaching video 1.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_13/hqdefault.jpg"
+      title: "It will all make sense. Trust the process",
+      description: "Message.",
+      thumbnail: "https://img.youtube.com/vi/mB_ZrYX0C7c/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_14",
+      youtubeId: "W4vyh8_3E9c",
       category: "Teaching",
-      title: "Teaching Video 2",
-      description: "Short description for teaching video 2.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_14/hqdefault.jpg"
+      title: "Today New doors will override your past denials.",
+      description: "Message.",
+      thumbnail: "https://img.youtube.com/vi/W4vyh8_3E9c/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_15",
+      youtubeId: "em9xip3c508",
       category: "Teaching",
-      title: "Teaching Video 3",
-      description: "Short description for teaching video 3.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_15/hqdefault.jpg"
+      title: "Your day of Restoration",
+      description: "Message.",
+      thumbnail: "https://img.youtube.com/vi/em9xip3c508/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_16",
+      youtubeId: "G6NZRYM6Wk4",
       category: "Teaching",
-      title: "Teaching Video 4",
-      description: "Short description for teaching video 4.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_16/hqdefault.jpg"
+      title: "You will have more rooms to accommodate your blessings this week",
+      description: "Message.",
+      thumbnail: "https://img.youtube.com/vi/G6NZRYM6Wk4/hqdefault.jpg"
     }
   ];
 
