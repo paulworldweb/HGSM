@@ -110,11 +110,11 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/vsiOfyok3Aw/hqdefault.jpg"
     },
     {
-      youtubeId: "8uumrYIiC-c&t=82s",
+      youtubeId: "YzIuG9J11Rc",
       category: "Sermon",
-      title: "Why no Miracles in Churches today",
+      title: "The reason you're alone",
       description: "Important Message.",
-      thumbnail: "https://img.youtube.com/8uumrYIiC-c&t=82s/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/YzIuG9J11Rc/hqdefault.jpg"
     },
 
     {
