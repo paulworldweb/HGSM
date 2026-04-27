@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
       category: "Sermon",
       title: "The God who turns things around is visiting you today.",
       description: "Important Message.",
-      thumbnail: "https://img.youtube.com/WG3JX4plQ6Y/hqdefault.jpg"
+      thumbnail: "https://img.youtube.com/vi/WG3JX4plQ6Y/hqdefault.jpg"
     },
 
     {
