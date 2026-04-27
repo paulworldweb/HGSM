@@ -212,3 +212,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Select all gallery images that should open in the popup
+  const galleryImages = document.querySelectorAll(".gallery-img");
+
+  // Select the lightbox container (the dark popup background)
+  const lightbox = document.getElementById("lightbox");
+
+  // Select the image inside the lightbox that will show the full-size photo
+  const lightboxImg = document.getElementById("lightboxImg");
+
+  // Select the close button (X)
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  // Loop through every gallery image
+  galleryImages.forEach((img) => {
+    // When a gallery image is clicked
+    img.addEventListener("click", function () {
+      // Show the lightbox popup
+      lightbox.classList.add("show");
+
+      // Put the clicked image source into the popup image
+      lightboxImg.src = this.src;
+
+      // Copy the alt text too
+      lightboxImg.alt = this.alt;
+    });
+  });
+
+  // If the close button exists
+  if (lightboxClose) {
+    // When the X button is clicked
+    lightboxClose.addEventListener("click", function () {
+      // Hide the lightbox popup
+      lightbox.classList.remove("show");
+    });
+  }
+
+  // If the lightbox exists
+  if (lightbox) {
+    // When the user clicks anywhere on the dark background
+    lightbox.addEventListener("click", function (e) {
+      // Only close if they clicked outside the image itself
+      if (e.target === lightbox) {
+        lightbox.classList.remove("show");
+      }
+    });
+  }
+});
