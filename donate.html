@@ -59,100 +59,96 @@
   </section>
 
   <!-- Donation Form + Side Card -->
-  <section class="donation-section">
-    <div class="container donation-layout">
+<section class="donation-section">
+  <div class="container donation-layout">
 
-      <div class="donation-form-card">
-        <div class="donation-label-box">Donation Information</div>
+    <div class="donation-form-card">
+      <div class="donation-label-box">Donation Information</div>
 
-        <form class="donation-form">
-          <div class="form-group full-width">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" />
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="Enter your email" />
-            </div>
-
-            <div class="form-group">
-              <label for="amount">Donation Amount (USD)</label>
-              <input type="text" id="amount" name="amount" placeholder="$ 0.00" />
-            </div>
-          </div>
-
-          <div class="form-group full-width">
-            <label for="message">Message (Optional)</label>
-            <textarea id="message" name="message" rows="5" placeholder="Add a note or prayer request (optional)"></textarea>
-          </div>
-
-          <button type="submit" class="donate-btn">Donate Now</button>
-        </form>
-      </div>
-
-      <div class="giving-info-card">
-        <div class="giving-icon">🤲</div>
-        <h2>Your Giving Makes a Difference</h2>
-        <p>
-          Every donation helps us continue teaching, spreading hope,
-          and serving people around the world.
-        </p>
-
-        <div class="verse-box">
-          <p>“Give, and it will be given to you.”</p>
-          <small>Luke 6:38</small>
+      <form class="donation-form" action="#" method="POST">
+        <div class="form-group full-width">
+          <label for="fullName">Full Name</label>
+          <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" />
         </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" />
+          </div>
+
+          <div class="form-group">
+            <label for="amount">Donation Amount (USD)</label>
+            <input type="text" id="amount" name="amount" placeholder="$ 0.00" />
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label for="message">Message (Optional)</label>
+          <textarea id="message" name="message" rows="5" placeholder="Add a note or prayer request (optional)"></textarea>
+        </div>
+
+        <!-- Optional Giving now INSIDE the form -->
+        <div class="form-group full-width">
+          <div class="section-heading">
+            <div class="section-icon">🎁</div>
+            <div>
+              <h2>Optional Giving</h2>
+              <p>You can choose where you would like your donation to support.</p>
+            </div>
+          </div>
+
+          <div class="giving-options-grid">
+            <label class="giving-option-card">
+              <input type="radio" name="givingPurpose" value="General Support" class="giving-radio" />
+              <span class="radio-circle"></span>
+              <span class="option-icon">⛪</span>
+              <span class="option-text">
+                <h3>General Support</h3>
+                <p>Helps support the overall ministry and daily operations.</p>
+              </span>
+            </label>
+
+            <label class="giving-option-card">
+              <input type="radio" name="givingPurpose" value="Outreach & Missions" class="giving-radio" />
+              <span class="radio-circle"></span>
+              <span class="option-icon">🌍</span>
+              <span class="option-text">
+                <h3>Outreach &amp; Missions</h3>
+                <p>Helps us reach and serve more communities.</p>
+              </span>
+            </label>
+
+            <label class="giving-option-card">
+              <input type="radio" name="givingPurpose" value="Ministry Development" class="giving-radio" />
+              <span class="radio-circle"></span>
+              <span class="option-icon">🏛</span>
+              <span class="option-text">
+                <h3>Ministry Development</h3>
+                <p>Helps us grow, improve, and expand the ministry.</p>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="donate-btn">Donate Now</button>
+      </form>
+    </div>
+
+    <div class="giving-info-card">
+      <div class="giving-icon">🤲</div>
+      <h2>Your Giving Makes a Difference</h2>
+      <p>
+        Every donation helps us continue teaching, spreading hope,
+        and serving people around the world.
+      </p>
+
+      <div class="verse-box">
+        <p>“Give, and it will be given to you.”</p>
+        <small>Luke 6:38</small>
       </div>
-
-    </div>
-  </section>
-
-  <!-- Optional Giving -->
-  <section class="giving-options-section">
-  <div class="container">
-    <div class="section-heading">
-      <div class="section-icon">🎁</div>
-      <div>
-        <h2>Optional Giving</h2>
-        <p>You can choose where you would like your donation to support.</p>
-      </div>
     </div>
 
-    <div class="giving-options-grid">
-
-      <label class="giving-option-card">
-        <input type="radio" name="givingPurpose" value="General Support" class="giving-radio" />
-        <span class="radio-circle"></span>
-        <span class="option-icon">⛪</span>
-        <span class="option-text">
-          <h3>General Support</h3>
-          <p>Helps support the overall ministry and daily operations.</p>
-        </span>
-      </label>
-
-      <label class="giving-option-card">
-        <input type="radio" name="givingPurpose" value="Outreach & Missions" class="giving-radio" />
-        <span class="radio-circle"></span>
-        <span class="option-icon">🌍</span>
-        <span class="option-text">
-          <h3>Outreach &amp; Missions</h3>
-          <p>Helps us reach and serve more communities.</p>
-        </span>
-      </label>
-
-      <label class="giving-option-card">
-        <input type="radio" name="givingPurpose" value="Ministry Development" class="giving-radio" />
-        <span class="radio-circle"></span>
-        <span class="option-icon">🏛</span>
-        <span class="option-text">
-          <h3>Ministry Development</h3>
-          <p>Helps us grow, improve, and expand the ministry.</p>
-        </span>
-      </label>
-
-    </div>
   </div>
 </section>
 
