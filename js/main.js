@@ -89,25 +89,25 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     {
-      youtubeId: "VIDEO_ID_9",
+      youtubeId: "7mXysiwfkvM",
       category: "Sermon",
-      title: "Sermon Video 1",
-      description: "Short description for sermon video 1.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_9/hqdefault.jpg"
+      title: "Why are you still sick?",
+      description: "SImportant Message.",
+      thumbnail: "https://img.youtube.com/vi/7mXysiwfkvM/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_10",
+      youtubeId: "V8PgibOY38Gs",
       category: "Sermon",
-      title: "Sermon Video 2",
-      description: "Short description for sermon video 2.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_10/hqdefault.jpg"
+      title: "What God cannot do, let it remain undone.",
+      description: "Important Message",
+      thumbnail: "https://img.youtube.com/vi/8PgibOY38Gs/hqdefault.jpg"
     },
     {
-      youtubeId: "VIDEO_ID_11",
+      youtubeId: "vsiOfyok3Aw",
       category: "Sermon",
-      title: "Sermon Video 3",
-      description: "Short description for sermon video 3.",
-      thumbnail: "https://img.youtube.com/vi/VIDEO_ID_11/hqdefault.jpg"
+      title: "Wilderness Season in Pidgin",
+      description: "Important Message.",
+      thumbnail: "https://img.youtube.com/vi/vsiOfyok3Aw/hqdefault.jpg"
     },
     {
       youtubeId: "VIDEO_ID_12",
