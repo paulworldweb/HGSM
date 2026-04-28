@@ -917,7 +917,7 @@ footer {
 }
 
 .footer-brand img {
-  height: 50px;
+  height: 80px;
   width: auto;
   display: block;
   background-color: var(--blue);
