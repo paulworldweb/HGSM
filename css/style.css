@@ -133,7 +133,7 @@ header {
 }
 
 .logo img {
-  height: 100px;
+  height: 120px;
   width: auto;
   display: block;
   background-color: var(--blue);
@@ -917,7 +917,7 @@ footer {
 }
 
 .footer-brand img {
-  height: 100px;
+  height: 120px;
   width: auto;
   display: block;
   background-color: var(--blue);
