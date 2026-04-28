@@ -920,7 +920,7 @@ footer {
   height: 50px;
   width: auto;
   display: block;
-  background-color: #d9dfeb;
+  background-color: var(--blue);
 }
 
 .footer-brand span {
