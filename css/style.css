@@ -109,14 +109,6 @@ a {
    HEADER / NAV
 ========================= */
 header {
-  background: var(--blue);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-/* Homepage transparent nav on hero */
-.home-page header {
   position: absolute;
   top: 0;
   left: 0;
@@ -124,6 +116,7 @@ header {
   background: transparent !important;
   box-shadow: none !important;
   border-bottom: none !important;
+  z-index: 1000;
 }
 
 .nav-bar {
@@ -133,11 +126,9 @@ header {
   justify-content: space-between;
   gap: 28px;
   position: relative;
-}
-
-.home-page .nav-bar,
-.home-page .logo {
   background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .logo {
@@ -146,13 +137,14 @@ header {
   gap: 12px;
   flex-shrink: 0;
   text-decoration: none;
+  background: transparent !important;
 }
 
 .logo img {
   height: 120px;
   width: auto;
   display: block;
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 .logo-text {
@@ -165,6 +157,7 @@ header {
 
 .site-nav {
   margin-left: auto;
+  background: transparent !important;
 }
 
 .site-nav ul {
@@ -173,6 +166,11 @@ header {
   align-items: center;
   gap: 28px;
   flex-wrap: wrap;
+  background: transparent !important;
+}
+
+.site-nav li {
+  background: transparent !important;
 }
 
 .site-nav a {
@@ -226,7 +224,7 @@ header {
 }
 
 /* =========================
-   HOME HERO
+   HERO - HOME
 ========================= */
 .hero {
   position: relative;
@@ -271,11 +269,11 @@ header {
 }
 
 /* =========================
-   SHARED PAGE HERO
+   HERO - OTHER PAGES
 ========================= */
 .page-hero {
   position: relative;
-  min-height: 430px;
+  min-height: 470px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -318,7 +316,7 @@ header {
   color: rgba(255, 255, 255, 0.96);
 }
 
-/* Optional page-specific hero backgrounds */
+/* Optional page hero backgrounds */
 .about-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
@@ -1106,7 +1104,6 @@ footer {
     display: inline-flex;
   }
 
-  @media (max-width: 980px) {
   .site-nav {
     position: absolute;
     top: 100%;
@@ -1152,7 +1149,6 @@ footer {
   .site-nav a.active {
     color: #151c2e;
   }
-}
 
   .two-column,
   .about-layout,
