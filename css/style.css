@@ -926,9 +926,10 @@ header {
    FOOTER
 ========================= */
 footer {
-  background: var(--blue);
+  background: #0f2c5c;
   color: var(--white);
   padding-top: 52px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .footer-grid {
