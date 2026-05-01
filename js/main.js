@@ -1,44 +1,61 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // =========================
-  // HAMBURGER MENU
-  // =========================
-const menuToggle = document.querySelector(".menu-toggle");
-const siteNav = document.querySelector(".site-nav");
+  /* =========================
+     HAMBURGER MENU
+  ========================= */
+  const menuToggle = document.querySelector(".menu-toggle");
+  const siteNav = document.querySelector(".site-nav");
+  const header = document.querySelector("header");
 
-// Only run if both the hamburger button and menu exist
-if (menuToggle && siteNav) {
-  // When the hamburger is clicked
-  menuToggle.addEventListener("click", function (e) {
-    // Stop the click from bubbling up to the document
-    e.stopPropagation();
+  function closeMenu() {
+    if (!menuToggle || !siteNav) return;
 
-    // Toggle hamburger into X
-    menuToggle.classList.toggle("active");
-
-    // Show or hide the menu
-    siteNav.classList.toggle("open");
-
-    // Update accessibility state
-    const expanded = menuToggle.classList.contains("active");
-    menuToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-  });
-
-  // Prevent clicks inside the menu from closing it immediately
-  siteNav.addEventListener("click", function (e) {
-    e.stopPropagation();
-  });
-
-  // Close menu when user clicks anywhere outside it
-  document.addEventListener("click", function () {
     siteNav.classList.remove("open");
     menuToggle.classList.remove("active");
     menuToggle.setAttribute("aria-expanded", "false");
-  });
-}
+  }
 
-  // =========================
-  // VIDEO PAGE ELEMENTS
-  // =========================
+  function toggleMenu(event) {
+    event.stopPropagation();
+
+    const isOpen = siteNav.classList.toggle("open");
+    menuToggle.classList.toggle("active", isOpen);
+    menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  }
+
+  if (menuToggle && siteNav) {
+    menuToggle.addEventListener("click", toggleMenu);
+
+    siteNav.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+      closeMenu();
+    });
+  }
+
+  /* =========================
+     HEADER SCROLL EFFECT
+     Transparent at top
+     Dark background when user scrolls on desktop
+  ========================= */
+  function handleHeaderScroll() {
+    if (!header) return;
+
+    if (window.innerWidth > 980 && window.scrollY > 40) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  }
+
+  handleHeaderScroll();
+  window.addEventListener("scroll", handleHeaderScroll);
+  window.addEventListener("resize", handleHeaderScroll);
+
+  /* =========================
+     VIDEO PAGE
+  ========================= */
   const prayerVideosGrid = document.getElementById("prayerVideosGrid");
   const sermonVideosGrid = document.getElementById("sermonVideosGrid");
   const teachingVideosGrid = document.getElementById("teachingVideosGrid");
@@ -48,9 +65,6 @@ if (menuToggle && siteNav) {
   const featuredVideoDescription = document.getElementById("featuredVideoDescription");
   const featuredVideoLink = document.getElementById("featuredVideoLink");
 
-  // =========================
-  // VIDEO LIST
-  // =========================
   const videos = [
     {
       youtubeId: "sVBfzNYbc54",
@@ -108,20 +122,19 @@ if (menuToggle && siteNav) {
       description: "Day 2.",
       thumbnail: "https://img.youtube.com/vi/42Rl0uTWB6A/hqdefault.jpg"
     },
-
     {
       youtubeId: "7mXysiwfkvM",
       category: "Sermon",
       title: "Why are you still sick?",
-      description: "SImportant Message.",
+      description: "Important Message.",
       thumbnail: "https://img.youtube.com/vi/7mXysiwfkvM/hqdefault.jpg"
     },
     {
       youtubeId: "V8PgibOY38Gs",
       category: "Sermon",
       title: "What God cannot do, let it remain undone.",
-      description: "Important Message",
-      thumbnail: "https://img.youtube.com/vi/8PgibOY38Gs/hqdefault.jpg"
+      description: "Important Message.",
+      thumbnail: "https://img.youtube.com/vi/V8PgibOY38Gs/hqdefault.jpg"
     },
     {
       youtubeId: "vsiOfyok3Aw",
@@ -137,7 +150,6 @@ if (menuToggle && siteNav) {
       description: "Important Message.",
       thumbnail: "https://img.youtube.com/vi/bFdBXc2ZG3o/hqdefault.jpg"
     },
-
     {
       youtubeId: "mB_ZrYX0C7c",
       category: "Teaching",
@@ -168,9 +180,6 @@ if (menuToggle && siteNav) {
     }
   ];
 
-  // =========================
-  // UPDATE FEATURED VIDEO
-  // =========================
   function updateFeaturedVideo(video) {
     if (featuredVideoFrame) {
       featuredVideoFrame.src = `https://www.youtube.com/embed/${video.youtubeId}`;
@@ -189,15 +198,7 @@ if (menuToggle && siteNav) {
     }
   }
 
-  // Set first video as featured
-  if (videos.length > 0) {
-    updateFeaturedVideo(videos[0]);
-  }
-
-  // =========================
-  // CREATE VIDEO CARDS
-  // =========================
-  videos.forEach((video) => {
+  function createVideoCard(video) {
     const card = document.createElement("article");
     card.className = "thumbnail-card";
 
@@ -213,72 +214,74 @@ if (menuToggle && siteNav) {
       </div>
     `;
 
-    // Click card to update featured video
     card.addEventListener("click", function () {
       updateFeaturedVideo(video);
-
       window.scrollTo({
         top: 0,
         behavior: "smooth"
       });
     });
 
-    // Put card in correct section
-    if (video.category === "Prayer" && prayerVideosGrid) {
-      prayerVideosGrid.appendChild(card);
-    } else if (video.category === "Sermon" && sermonVideosGrid) {
-      sermonVideosGrid.appendChild(card);
-    } else if (video.category === "Teaching" && teachingVideosGrid) {
-      teachingVideosGrid.appendChild(card);
+    return card;
+  }
+
+  function renderVideos() {
+    if (!prayerVideosGrid && !sermonVideosGrid && !teachingVideosGrid) return;
+
+    if (videos.length > 0) {
+      updateFeaturedVideo(videos[0]);
     }
-  });
-});
 
+    videos.forEach(function (video) {
+      const card = createVideoCard(video);
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Select all gallery images that should open in the popup
-  const galleryImages = document.querySelectorAll(".gallery-img");
-
-  // Select the lightbox container (the dark popup background)
-  const lightbox = document.getElementById("lightbox");
-
-  // Select the image inside the lightbox that will show the full-size photo
-  const lightboxImg = document.getElementById("lightboxImg");
-
-  // Select the close button (X)
-  const lightboxClose = document.getElementById("lightboxClose");
-
-  // Loop through every gallery image
-  galleryImages.forEach((img) => {
-    // When a gallery image is clicked
-    img.addEventListener("click", function () {
-      // Show the lightbox popup
-      lightbox.classList.add("show");
-
-      // Put the clicked image source into the popup image
-      lightboxImg.src = this.src;
-
-      // Copy the alt text too
-      lightboxImg.alt = this.alt;
-    });
-  });
-
-  // If the close button exists
-  if (lightboxClose) {
-    // When the X button is clicked
-    lightboxClose.addEventListener("click", function () {
-      // Hide the lightbox popup
-      lightbox.classList.remove("show");
+      if (video.category === "Prayer" && prayerVideosGrid) {
+        prayerVideosGrid.appendChild(card);
+      } else if (video.category === "Sermon" && sermonVideosGrid) {
+        sermonVideosGrid.appendChild(card);
+      } else if (video.category === "Teaching" && teachingVideosGrid) {
+        teachingVideosGrid.appendChild(card);
+      }
     });
   }
 
-  // If the lightbox exists
+  renderVideos();
+
+  /* =========================
+     GALLERY LIGHTBOX
+  ========================= */
+  const galleryImages = document.querySelectorAll(".gallery-img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  function openLightbox(image) {
+    if (!lightbox || !lightboxImg) return;
+
+    lightbox.classList.add("show");
+    lightboxImg.src = image.src;
+    lightboxImg.alt = image.alt;
+  }
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.classList.remove("show");
+  }
+
+  galleryImages.forEach(function (img) {
+    img.addEventListener("click", function () {
+      openLightbox(this);
+    });
+  });
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener("click", closeLightbox);
+  }
+
   if (lightbox) {
-    // When the user clicks anywhere on the dark background
-    lightbox.addEventListener("click", function (e) {
-      // Only close if they clicked outside the image itself
-      if (e.target === lightbox) {
-        lightbox.classList.remove("show");
+    lightbox.addEventListener("click", function (event) {
+      if (event.target === lightbox) {
+        closeLightbox();
       }
     });
   }
