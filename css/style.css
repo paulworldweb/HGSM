@@ -108,6 +108,7 @@ a {
 /* =========================
    HEADER / NAV
 ========================= */
+/* Default header */
 header {
   position: absolute;
   top: 0;
@@ -117,6 +118,33 @@ header {
   box-shadow: none !important;
   border-bottom: none !important;
   z-index: 1000;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Header after scrolling on desktop */
+header.scrolled {
+  position: fixed;
+  background: #0f2c5c !important; /* same kind of dark tone as footer */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Keep nav bar smooth when header changes */
+.nav-bar {
+  min-height: 92px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  position: relative;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  transition: min-height 0.3s ease;
+}
+
+/* Optional: slightly smaller nav when scrolled */
+header.scrolled .nav-bar {
+  min-height: 82px;
 }
 
 .nav-bar {
