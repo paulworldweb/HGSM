@@ -8,8 +8,8 @@
 }
 
 :root {
-  --blue: #1f3f7f;
-  --blue-dark: #173265;
+  --blue: #163b7a;
+  --blue-dark: #0f2c5c;
   --gold: #d2a12f;
   --gold-soft: #f5e6bf;
   --text: #1f2430;
@@ -115,17 +115,15 @@ header {
   z-index: 1000;
 }
 
-/* Homepage transparent header on hero image */
+/* Homepage transparent nav on hero */
 .home-page header {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(31, 63, 127, 0.18);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  box-shadow: none;
-  border-bottom: none;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
 }
 
 .nav-bar {
@@ -137,28 +135,14 @@ header {
   position: relative;
 }
 
-.home-page header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: transparent !important;
-  box-shadow: none !important;
-  border-bottom: none !important;
-  z-index: 1000;
-}
-
-.home-page .nav-bar {
-  background: transparent !important;
-  box-shadow: none !important;
-  border: none !important;
-}
-
+.home-page .nav-bar,
 .home-page .logo,
 .home-page .site-nav,
 .home-page .site-nav ul,
 .home-page .site-nav li {
   background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
 }
 
 .logo {
@@ -176,7 +160,6 @@ header {
   background-color: transparent;
 }
 
-/* Keep if you need the full name beside the logo */
 .logo-text {
   font-size: 0.95rem;
   font-weight: 600;
@@ -248,30 +231,25 @@ header {
 }
 
 /* =========================
-   HERO / HOME
+   HOME HERO
 ========================= */
 .hero {
   position: relative;
-  min-height: 540px;
+  min-height: 470px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 135px 20px 65px;
+  padding: 120px 20px 55px;
   color: #ffffff;
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
     url("../images/image1.jpg") center 20% / cover no-repeat;
 }
 
-.home-page .hero {
-  min-height: 100vh;
-  padding-top: 120px;
-}
-
 .hero-content {
   width: min(820px, 92%);
-  padding: 60px 0;
+  padding: 30px 0;
 }
 
 .eyebrow {
@@ -297,6 +275,94 @@ header {
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* =========================
+   SHARED PAGE HERO
+========================= */
+.page-hero {
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 55px;
+  color: #ffffff;
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/image1.jpg") center 20% / cover no-repeat;
+}
+
+.page-hero-content {
+  width: min(900px, 92%);
+  margin: 0 auto;
+}
+
+.page-hero .section-tag,
+.page-hero .eyebrow {
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.page-hero h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 1.08;
+  margin-bottom: 18px;
+  color: #ffffff;
+}
+
+.page-hero p {
+  max-width: 850px;
+  margin: 0 auto;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.96);
+}
+
+/* Optional page-specific hero backgrounds */
+.about-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/about-hero.jpg") center 20% / cover no-repeat;
+}
+
+.videos-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/ofure003.jpg") center 20% / cover no-repeat;
+}
+
+.events-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/events-hero.jpg") center 20% / cover no-repeat;
+}
+
+.prayer-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/prayer-hero.jpg") center 20% / cover no-repeat;
+}
+
+.contact-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/contact-hero.jpg") center 20% / cover no-repeat;
+}
+
+.donate-hero-bg {
+  background:
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
+    url("../images/donate-hero.jpg") center 20% / cover no-repeat;
+}
+
+/* =========================
+   HOME CONTENT
+========================= */
 .welcome-section {
   padding: 70px 0 50px;
   background: var(--white);
@@ -340,12 +406,7 @@ header {
 .contact-item,
 .prayer-info-card p,
 .featured-video-copy p,
-.event-page-text,
-.videos-hero-text,
-.contact-hero-text,
-.about-hero-text,
-.events-hero-text,
-.prayer-hero-text {
+.event-page-text {
   color: var(--muted);
   font-size: 1rem;
 }
@@ -404,8 +465,7 @@ header {
 .contact-form-card,
 .prayer-form-card,
 .prayer-info-card,
-.event-page-card,
-.video-card {
+.event-page-card {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -438,7 +498,7 @@ header {
 }
 
 /* =========================
-   LATEST VIDEO / EVENT ON HOME
+   LATEST VIDEO / EVENT
 ========================= */
 .latest-video-section {
   padding: 76px 0;
@@ -512,28 +572,6 @@ header {
   margin: 18px 0 20px;
   color: var(--muted);
   font-size: 0.95rem;
-}
-
-/* =========================
-   PAGE HERO SECTIONS
-========================= */
-.about-hero,
-.contact-hero,
-.prayer-hero,
-.events-hero,
-.videos-hero {
-  background: var(--bg-soft);
-  padding: 70px 0 40px;
-  border-bottom: 1px solid #ece3d2;
-}
-
-.about-hero-content,
-.contact-hero-content,
-.prayer-hero-content,
-.events-hero-content,
-.videos-hero-content {
-  width: var(--container);
-  margin: 0 auto;
 }
 
 /* =========================
@@ -619,7 +657,7 @@ header {
 }
 
 /* =========================
-   CONTACT / PRAYER / EVENTS / VIDEOS SECTIONS
+   CONTACT / PRAYER / EVENTS / VIDEOS
 ========================= */
 .contact-section,
 .prayer-section,
@@ -964,7 +1002,7 @@ footer {
   height: 120px;
   width: auto;
   display: block;
-  background-color: var(--blue);
+  background-color: transparent;
 }
 
 .footer-brand span {
@@ -1072,14 +1110,6 @@ footer {
     display: inline-flex;
   }
 
-  .about-hero-content,
-  .contact-hero-content,
-  .prayer-hero-content,
-  .events-hero-content,
-  .videos-hero-content {
-    width: min(1180px, calc(100% - 32px));
-  }
-
   .site-nav {
     position: absolute;
     top: 100%;
@@ -1176,20 +1206,18 @@ footer {
     white-space: normal;
   }
 
-  .hero {
-    min-height: 380px;
-  }
-
-  .home-page .hero {
-    min-height: 100vh;
-    padding-top: 120px;
+  .hero,
+  .page-hero {
+    min-height: 360px;
+    padding: 110px 20px 45px;
   }
 
   .hero-content {
-    padding: 48px 0;
+    padding: 20px 0;
   }
 
-  .hero h1 {
+  .hero h1,
+  .page-hero h1 {
     font-size: 2.4rem;
   }
 
@@ -1206,14 +1234,6 @@ footer {
   .thumbnail-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
-  }
-
-  .about-hero,
-  .contact-hero,
-  .prayer-hero,
-  .events-hero,
-  .videos-hero {
-    padding: 50px 0 34px;
   }
 
   .contact-form-card,
