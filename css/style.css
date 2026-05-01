@@ -260,7 +260,7 @@ header {
   padding: 135px 20px 65px;
   color: #ffffff;
   background:
-    linear-gradient(rgba(15, 37, 84, 0.45), rgba(15, 37, 84, 0.45)),
+    linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
     url("../images/image1.jpg") center 20% / cover no-repeat;
 }
 
