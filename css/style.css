@@ -137,6 +137,30 @@ header {
   position: relative;
 }
 
+.home-page header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+  z-index: 1000;
+}
+
+.home-page .nav-bar {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.home-page .logo,
+.home-page .site-nav,
+.home-page .site-nav ul,
+.home-page .site-nav li {
+  background: transparent !important;
+}
+
 .logo {
   display: flex;
   align-items: center;
@@ -149,7 +173,7 @@ header {
   height: 120px;
   width: auto;
   display: block;
-  background-color: var(--blue);
+  background-color: transparent;
 }
 
 /* Keep if you need the full name beside the logo */
@@ -228,14 +252,15 @@ header {
 ========================= */
 .hero {
   position: relative;
-  min-height: 500px;
+  min-height: 540px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 135px 20px 65px;
   color: #ffffff;
   background:
-    linear-gradient(rgba(24, 53, 109, 0.60), rgba(24, 53, 109, 0.60)),
+    linear-gradient(rgba(15, 37, 84, 0.45), rgba(15, 37, 84, 0.45)),
     url("../images/image1.jpg") center 20% / cover no-repeat;
 }
 
