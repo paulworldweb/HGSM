@@ -115,6 +115,19 @@ header {
   z-index: 1000;
 }
 
+/* Homepage transparent header on hero image */
+.home-page header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(31, 63, 127, 0.18);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: none;
+  border-bottom: none;
+}
+
 .nav-bar {
   min-height: 92px;
   display: flex;
@@ -139,13 +152,14 @@ header {
   background-color: var(--blue);
 }
 
-/*.logo-text {
+/* Keep if you need the full name beside the logo */
+.logo-text {
   font-size: 0.95rem;
   font-weight: 600;
   color: #ffffff;
   white-space: nowrap;
   letter-spacing: 0.2px;
-}*/
+}
 
 .site-nav {
   margin-left: auto;
@@ -223,6 +237,11 @@ header {
   background:
     linear-gradient(rgba(24, 53, 109, 0.60), rgba(24, 53, 109, 0.60)),
     url("../images/image1.jpg") center 20% / cover no-repeat;
+}
+
+.home-page .hero {
+  min-height: 100vh;
+  padding-top: 120px;
 }
 
 .hero-content {
@@ -471,7 +490,7 @@ header {
 }
 
 /* =========================
-   ABOUT / CONTACT / PRAYER / EVENTS HERO
+   PAGE HERO SECTIONS
 ========================= */
 .about-hero,
 .contact-hero,
@@ -575,7 +594,7 @@ header {
 }
 
 /* =========================
-   CONTACT / PRAYER / EVENTS / VIDEOS GRID BACKGROUND
+   CONTACT / PRAYER / EVENTS / VIDEOS SECTIONS
 ========================= */
 .contact-section,
 .prayer-section,
@@ -1093,10 +1112,6 @@ footer {
     min-height: 220px;
     height: 220px;
   }
-
-  .payment-right {
-    justify-content: flex-start;
-  }
 }
 
 @media (max-width: 900px) {
@@ -1138,6 +1153,11 @@ footer {
 
   .hero {
     min-height: 380px;
+  }
+
+  .home-page .hero {
+    min-height: 100vh;
+    padding-top: 120px;
   }
 
   .hero-content {
@@ -1211,64 +1231,4 @@ footer {
     right: 20px;
     font-size: 2.4rem;
   }
-}
-
-/* =========================
-   TRANSPARENT HEADER ON HOMEPAGE
-========================= */
-.home-page header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: transparent;
-  box-shadow: none;
-  border-bottom: none;
-  z-index: 1000;
-}
-
-.home-page .nav-bar {
-  min-height: 95px;
-}
-
-/* Make logo box blend better */
-.home-page .logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.home-page .logo img {
-  height: 48px;
-  width: auto;
-  display: block;
-  background: transparent;
-}
-
-.home-page .logo-text {
-  color: #ffffff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-/* Nav links on image */
-.home-page .site-nav a {
-  color: #ffffff;
-}
-
-.home-page .site-nav a:hover,
-.home-page .site-nav a.active {
-  color: #f1c04a;
-}
-
-/* Hamburger lines on homepage */
-.home-page .menu-toggle span {
-  background: #ffffff;
-}
-
-/* Give the hero space so text does not clash with nav */
-.home-page .hero {
-  min-height: 100vh;
-  padding-top: 120px;
 }
