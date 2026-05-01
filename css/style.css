@@ -1212,3 +1212,63 @@ footer {
     font-size: 2.4rem;
   }
 }
+
+/* =========================
+   TRANSPARENT HEADER ON HOMEPAGE
+========================= */
+.home-page header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  border-bottom: none;
+  z-index: 1000;
+}
+
+.home-page .nav-bar {
+  min-height: 95px;
+}
+
+/* Make logo box blend better */
+.home-page .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.home-page .logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+  background: transparent;
+}
+
+.home-page .logo-text {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Nav links on image */
+.home-page .site-nav a {
+  color: #ffffff;
+}
+
+.home-page .site-nav a:hover,
+.home-page .site-nav a.active {
+  color: #f1c04a;
+}
+
+/* Hamburger lines on homepage */
+.home-page .menu-toggle span {
+  background: #ffffff;
+}
+
+/* Give the hero space so text does not clash with nav */
+.home-page .hero {
+  min-height: 100vh;
+  padding-top: 120px;
+}
