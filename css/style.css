@@ -1220,7 +1220,8 @@ body.theme-dark .theme-option {
   }
 
   .theme-switcher {
-    display: none;
+    display: block;
+    margin-left: 10px;
   }
 
   .site-nav {
