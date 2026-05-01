@@ -1,11 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
   /* =========================
-     HAMBURGER MENU
+     ELEMENTS
   ========================= */
+  const header = document.querySelector("header");
   const menuToggle = document.querySelector(".menu-toggle");
   const siteNav = document.querySelector(".site-nav");
-  const header = document.querySelector("header");
 
+  const themeToggleBtn = document.getElementById("themeToggleBtn");
+  const themeDropdown = document.getElementById("themeDropdown");
+  const themeOptions = document.querySelectorAll(".theme-option");
+
+  const prayerVideosGrid = document.getElementById("prayerVideosGrid");
+  const sermonVideosGrid = document.getElementById("sermonVideosGrid");
+  const teachingVideosGrid = document.getElementById("teachingVideosGrid");
+
+  const featuredVideoFrame = document.getElementById("featuredVideoFrame");
+  const featuredVideoTitle = document.getElementById("featuredVideoTitle");
+  const featuredVideoDescription = document.getElementById("featuredVideoDescription");
+  const featuredVideoLink = document.getElementById("featuredVideoLink");
+
+  const galleryImages = document.querySelectorAll(".gallery-img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const lightboxClose = document.getElementById("lightboxClose");
+
+  /* =========================
+     HAMBURGER MENU
+  ========================= */
   function closeMenu() {
     if (!menuToggle || !siteNav) return;
 
@@ -15,6 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function toggleMenu(event) {
+    if (!menuToggle || !siteNav) return;
+
     event.stopPropagation();
 
     const isOpen = siteNav.classList.toggle("open");
@@ -22,22 +45,20 @@ document.addEventListener("DOMContentLoaded", function () {
     menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
   }
 
-  if (menuToggle && siteNav) {
+  function setupMenu() {
+    if (!menuToggle || !siteNav) return;
+
     menuToggle.addEventListener("click", toggleMenu);
 
     siteNav.addEventListener("click", function (event) {
       event.stopPropagation();
     });
 
-    document.addEventListener("click", function () {
-      closeMenu();
-    });
+    document.addEventListener("click", closeMenu);
   }
 
   /* =========================
      HEADER SCROLL EFFECT
-     Transparent at top
-     Dark background when user scrolls on desktop
   ========================= */
   function handleHeaderScroll() {
     if (!header) return;
@@ -49,22 +70,80 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  handleHeaderScroll();
-  window.addEventListener("scroll", handleHeaderScroll);
-  window.addEventListener("resize", handleHeaderScroll);
+  function setupHeaderScroll() {
+    handleHeaderScroll();
+    window.addEventListener("scroll", handleHeaderScroll);
+    window.addEventListener("resize", handleHeaderScroll);
+  }
 
   /* =========================
-     VIDEO PAGE
+     THEME SWITCHER
   ========================= */
-  const prayerVideosGrid = document.getElementById("prayerVideosGrid");
-  const sermonVideosGrid = document.getElementById("sermonVideosGrid");
-  const teachingVideosGrid = document.getElementById("teachingVideosGrid");
+  function applyTheme(theme) {
+    document.body.classList.remove("theme-light", "theme-dark");
 
-  const featuredVideoFrame = document.getElementById("featuredVideoFrame");
-  const featuredVideoTitle = document.getElementById("featuredVideoTitle");
-  const featuredVideoDescription = document.getElementById("featuredVideoDescription");
-  const featuredVideoLink = document.getElementById("featuredVideoLink");
+    if (theme === "dark") {
+      document.body.classList.add("theme-dark");
+    } else if (theme === "light") {
+      document.body.classList.add("theme-light");
+    } else {
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.body.classList.add(prefersDark ? "theme-dark" : "theme-light");
+    }
 
+    localStorage.setItem("site-theme", theme);
+
+    themeOptions.forEach(function (option) {
+      option.classList.toggle("active", option.dataset.theme === theme);
+    });
+  }
+
+  function loadSavedTheme() {
+    const savedTheme = localStorage.getItem("site-theme") || "auto";
+    applyTheme(savedTheme);
+  }
+
+  function setupThemeSwitcher() {
+    if (!themeToggleBtn || !themeDropdown || themeOptions.length === 0) return;
+
+    themeToggleBtn.addEventListener("click", function (event) {
+      event.stopPropagation();
+      themeDropdown.classList.toggle("show");
+
+      const expanded = themeDropdown.classList.contains("show");
+      themeToggleBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    themeOptions.forEach(function (option) {
+      option.addEventListener("click", function () {
+        applyTheme(option.dataset.theme);
+        themeDropdown.classList.remove("show");
+        themeToggleBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    document.addEventListener("click", function () {
+      themeDropdown.classList.remove("show");
+      themeToggleBtn.setAttribute("aria-expanded", "false");
+    });
+
+    themeDropdown.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    loadSavedTheme();
+
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function () {
+      const savedTheme = localStorage.getItem("site-theme") || "auto";
+      if (savedTheme === "auto") {
+        applyTheme("auto");
+      }
+    });
+  }
+
+  /* =========================
+     VIDEO DATA
+  ========================= */
   const videos = [
     {
       youtubeId: "sVBfzNYbc54",
@@ -130,12 +209,12 @@ document.addEventListener("DOMContentLoaded", function () {
       thumbnail: "https://img.youtube.com/vi/7mXysiwfkvM/hqdefault.jpg"
     },
     {
-  youtubeId: "8PgibOY38Gs",
-  category: "Sermon",
-  title: "What God cannot do, let it remain undone.",
-  description: "Important Message.",
-  thumbnail: "https://img.youtube.com/vi/8PgibOY38Gs/hqdefault.jpg"
-},
+      youtubeId: "8PgibOY38Gs",
+      category: "Sermon",
+      title: "What God cannot do, let it remain undone.",
+      description: "Important Message.",
+      thumbnail: "https://img.youtube.com/vi/8PgibOY38Gs/hqdefault.jpg"
+    },
     {
       youtubeId: "vsiOfyok3Aw",
       category: "Sermon",
@@ -180,6 +259,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ];
 
+  /* =========================
+     VIDEO PAGE
+  ========================= */
   function updateFeaturedVideo(video) {
     if (featuredVideoFrame) {
       featuredVideoFrame.src = `https://www.youtube.com/embed/${video.youtubeId}`;
@@ -245,16 +327,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  renderVideos();
-
   /* =========================
      GALLERY LIGHTBOX
   ========================= */
-  const galleryImages = document.querySelectorAll(".gallery-img");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImg = document.getElementById("lightboxImg");
-  const lightboxClose = document.getElementById("lightboxClose");
-
   function openLightbox(image) {
     if (!lightbox || !lightboxImg) return;
 
@@ -268,21 +343,32 @@ document.addEventListener("DOMContentLoaded", function () {
     lightbox.classList.remove("show");
   }
 
-  galleryImages.forEach(function (img) {
-    img.addEventListener("click", function () {
-      openLightbox(this);
+  function setupGallery() {
+    if (!galleryImages.length || !lightbox || !lightboxImg) return;
+
+    galleryImages.forEach(function (img) {
+      img.addEventListener("click", function () {
+        openLightbox(img);
+      });
     });
-  });
 
-  if (lightboxClose) {
-    lightboxClose.addEventListener("click", closeLightbox);
-  }
+    if (lightboxClose) {
+      lightboxClose.addEventListener("click", closeLightbox);
+    }
 
-  if (lightbox) {
     lightbox.addEventListener("click", function (event) {
       if (event.target === lightbox) {
         closeLightbox();
       }
     });
   }
+
+  /* =========================
+     INIT
+  ========================= */
+  setupMenu();
+  setupHeaderScroll();
+  setupThemeSwitcher();
+  renderVideos();
+  setupGallery();
 });
