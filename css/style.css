@@ -23,7 +23,7 @@
   --card-bg: #f8faff;
   --container: min(1180px, calc(100% - 80px));
 
-  /* theme variables */
+  /* theme colors */
   --page-bg: #ffffff;
   --section-bg: #f6f7fa;
   --card-surface: #ffffff;
@@ -126,7 +126,7 @@ a {
 }
 
 /* =========================
-   THEME COLORS
+   THEME COLOR APPLICATION
 ========================= */
 .welcome-section,
 .about-section,
@@ -142,7 +142,9 @@ a {
 .prayer-section,
 .events-section,
 .videos-grid-section,
-.gallery-section {
+.gallery-section,
+.donation-section,
+.payment-section {
   background: var(--section-bg);
 }
 
@@ -155,7 +157,11 @@ a {
 .event-page-card,
 .thumbnail-card,
 .scripture-card,
-.event-card {
+.event-card,
+.donation-form-card,
+.giving-info-card,
+.payment-card,
+.giving-option-card {
   background: var(--card-surface);
 }
 
@@ -174,7 +180,10 @@ a {
 .footer-about p,
 .footer-contact p,
 .footer-links a,
-.quick-subtext {
+.quick-subtext,
+.giving-info-card p,
+.option-text p,
+.payment-left p {
   color: var(--text-soft);
 }
 
@@ -277,6 +286,7 @@ header.scrolled .nav-bar {
   font-weight: 700;
 }
 
+/* hamburger */
 .menu-toggle {
   display: none;
   width: 46px;
@@ -316,24 +326,22 @@ header.scrolled .nav-bar {
 .theme-switcher {
   position: relative;
   margin-left: 18px;
+  display: block;
 }
 
 .theme-toggle-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: rgba(255, 255, 255, 0.14);
   color: #ffffff;
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 14px;
-  padding: 10px 16px;
+  padding: 10px 14px;
   font-size: 0.95rem;
   cursor: pointer;
-}
-
-.theme-icon {
-  font-size: 1rem;
-  color: #f5e6bf;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .theme-toggle-btn span {
@@ -374,6 +382,11 @@ header.scrolled .nav-bar {
 .theme-option.active {
   background: #1e78c8;
   color: #ffffff;
+}
+
+/* hidden on desktop */
+.mobile-theme-switcher {
+  display: none;
 }
 
 /* =========================
@@ -494,7 +507,7 @@ header.scrolled .nav-bar {
 }
 
 /* =========================
-   SHARED SECTIONS
+   SHARED CONTENT
 ========================= */
 .welcome-section {
   padding: 70px 0 50px;
@@ -517,7 +530,9 @@ header.scrolled .nav-bar {
 .featured-video-copy h2,
 .scripture-card h2,
 .event-page-content h2,
-.giving-info-card h2 {
+.giving-info-card h2,
+.section-heading h2,
+.payment-left h2 {
   font-family: Georgia, "Times New Roman", serif;
   font-size: clamp(2rem, 3vw, 3rem);
   line-height: 1.12;
@@ -570,7 +585,11 @@ header.scrolled .nav-bar {
 .event-page-card,
 .thumbnail-card,
 .scripture-card,
-.event-card {
+.event-card,
+.donation-form-card,
+.giving-info-card,
+.payment-card,
+.giving-option-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -655,7 +674,8 @@ header.scrolled .nav-bar {
 
 .event-copy h3,
 .video-card-content h3,
-.about-info-card h3 {
+.about-info-card h3,
+.option-text h3 {
   font-family: Georgia, "Times New Roman", serif;
   color: var(--blue);
 }
@@ -775,7 +795,8 @@ header.scrolled .nav-bar {
 
 .contact-icon,
 .prayer-icon,
-.giving-icon {
+.giving-icon,
+.payment-icon {
   font-size: 3rem;
   margin-bottom: 16px;
 }
@@ -798,13 +819,15 @@ header.scrolled .nav-bar {
 }
 
 .contact-form-card,
-.prayer-form-card {
+.prayer-form-card,
+.donation-form-card {
   padding: 34px 34px 36px;
   position: relative;
 }
 
 .contact-label-box,
-.prayer-label-box {
+.prayer-label-box,
+.donation-label-box {
   position: absolute;
   top: -16px;
   left: 24px;
@@ -817,8 +840,177 @@ header.scrolled .nav-bar {
 }
 
 .contact-form,
-.prayer-form {
+.prayer-form,
+.donation-form {
   margin-top: 18px;
+}
+
+/* =========================
+   DONATE PAGE
+========================= */
+.donation-section {
+  padding: 50px 0 34px;
+}
+
+.donation-layout {
+  display: grid;
+  grid-template-columns: 2fr 0.8fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.giving-info-card {
+  padding: 34px 26px;
+  text-align: center;
+  min-height: 100%;
+}
+
+.giving-info-card h2 {
+  font-size: 2.2rem;
+}
+
+.optional-giving {
+  margin-top: 34px;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.section-heading h2 {
+  font-size: 2rem;
+  margin-bottom: 4px;
+}
+
+.section-heading p {
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.section-icon {
+  font-size: 2rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.giving-options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.giving-option-card {
+  padding: 22px 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.giving-option-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.giving-radio {
+  display: none;
+}
+
+.radio-circle {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #8b96aa;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.giving-radio:checked + .radio-circle {
+  border-color: var(--blue);
+}
+
+.giving-radio:checked + .radio-circle::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: var(--blue);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.option-icon {
+  font-size: 2.2rem;
+  color: var(--blue);
+  flex-shrink: 0;
+}
+
+.option-text h3 {
+  font-size: 1.1rem;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.option-text p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.donate-btn {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.donate-btn:hover {
+  background: #b98d25;
+  transform: translateY(-1px);
+}
+
+.payment-section {
+  padding: 0 0 42px;
+}
+
+.payment-card {
+  padding: 28px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.payment-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.payment-right {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.payment-right span {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--blue);
 }
 
 /* =========================
@@ -1105,7 +1297,6 @@ footer {
 }
 
 .gallery-card {
-  background: var(--card-surface);
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 10px 24px rgba(28, 35, 56, 0.08);
@@ -1182,12 +1373,16 @@ body.theme-dark .featured-video-copy h2,
 body.theme-dark .scripture-card h2,
 body.theme-dark .event-page-content h2,
 body.theme-dark .giving-info-card h2,
+body.theme-dark .section-heading h2,
+body.theme-dark .payment-left h2,
 body.theme-dark .quick-card h3,
 body.theme-dark .about-info-card h3,
 body.theme-dark .event-copy h3,
 body.theme-dark .category-heading,
 body.theme-dark .gallery-title,
-body.theme-dark .thumbnail-card-content h3 {
+body.theme-dark .thumbnail-card-content h3,
+body.theme-dark .option-text h3,
+body.theme-dark .payment-right span {
   color: #ffffff;
 }
 
@@ -1215,15 +1410,19 @@ body.theme-dark .theme-option {
 }
 
 @media (max-width: 980px) {
+  .menuToggle,
   .menu-toggle {
     display: inline-flex;
   }
 
+  /* desktop theme button hidden on mobile */
   .theme-switcher {
     display: none;
   }
 
-   .mobile-theme-switcher {
+  /* mobile theme block shown only on mobile */
+  .mobile-theme-switcher {
+    display: block;
     margin-top: 18px;
     padding-top: 16px;
     border-top: 1px solid #e6e6e6;
@@ -1313,7 +1512,9 @@ body.theme-dark .theme-option {
   .event-card,
   .event-page-card,
   .featured-video-layout,
-  .footer-grid {
+  .footer-grid,
+  .donation-layout,
+  .giving-options-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1326,6 +1527,16 @@ body.theme-dark .theme-option {
   .about-image-card img {
     min-height: 220px;
     height: 220px;
+  }
+
+  .payment-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+  }
+
+  .giving-info-card h2 {
+    font-size: 2rem;
   }
 }
 
@@ -1371,7 +1582,9 @@ body.theme-dark .theme-option {
   }
 
   .hero,
-  .page-hero {
+  .page-hero,
+  .donation-hero,
+  .donate-hero {
     min-height: 360px;
     padding: 110px 20px 45px;
   }
@@ -1381,7 +1594,9 @@ body.theme-dark .theme-option {
   }
 
   .hero h1,
-  .page-hero h1 {
+  .page-hero h1,
+  .donation-hero h1,
+  .donate-hero h1 {
     font-size: 2.4rem;
   }
 
@@ -1403,12 +1618,15 @@ body.theme-dark .theme-option {
   .contact-form-card,
   .prayer-form-card,
   .contact-info-card,
-  .prayer-info-card {
+  .prayer-info-card,
+  .donation-form-card,
+  .giving-info-card {
     padding: 26px 20px 24px;
   }
 
   .contact-label-box,
-  .prayer-label-box {
+  .prayer-label-box,
+  .donation-label-box {
     position: static;
     display: inline-block;
     margin-bottom: 18px;
@@ -1423,7 +1641,10 @@ body.theme-dark .theme-option {
   .event-page-content h2,
   .about-text-card h2,
   .scripture-card h2,
-  .gallery-title {
+  .gallery-title,
+  .section-heading h2,
+  .giving-info-card h2,
+  .payment-left h2 {
     font-size: 1.8rem;
   }
 
@@ -1433,6 +1654,19 @@ body.theme-dark .theme-option {
 
   .gallery-card img {
     height: 220px;
+  }
+
+  .option-text h3 {
+    font-size: 1.05rem;
+  }
+
+  .payment-right {
+    gap: 16px;
+    justify-content: flex-start;
+  }
+
+  .payment-right span {
+    font-size: 1.5rem;
   }
 
   .lightbox-close {
