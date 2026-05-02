@@ -1223,6 +1223,42 @@ body.theme-dark .theme-option {
     display: none;
   }
 
+   .mobile-theme-switcher {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #e6e6e6;
+  }
+
+  .mobile-theme-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #151c2e;
+    margin-bottom: 10px;
+  }
+
+  .mobile-theme-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mobile-theme-options .theme-option {
+    width: 100%;
+    border: none;
+    background: #f4f6fb;
+    color: #151c2e;
+    text-align: left;
+    padding: 12px 14px;
+    border-radius: 12px;
+    font-size: 0.98rem;
+    cursor: pointer;
+  }
+
+  .mobile-theme-options .theme-option.active {
+    background: #1e78c8;
+    color: #ffffff;
+  }
+
   .site-nav {
     position: absolute;
     top: 100%;
