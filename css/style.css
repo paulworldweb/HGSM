@@ -211,8 +211,12 @@ header {
 
 header.scrolled {
   position: fixed;
-  background: #0f2c5c !important;
+  background: #3f1c6a !important;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12) !important;
+}
+
+header.scrolled .nav-bar {
+  background: transparent !important;
 }
 
 .nav-bar {
@@ -473,37 +477,37 @@ header.scrolled .nav-bar {
 .about-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/about-hero.jpg") center 20% / cover no-repeat;
+    url("../images/about001.png") center 20% / cover no-repeat;
 }
 
 .videos-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/ofure003.jpg") center 20% / cover no-repeat;
+    url("../images/videos001.png") center 20% / cover no-repeat;
 }
 
 .events-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/events-hero.jpg") center 20% / cover no-repeat;
+    url("../images/events001.png") center 20% / cover no-repeat;
 }
 
 .prayer-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/prayer-hero.jpg") center 20% / cover no-repeat;
+    url("../images/prayer001.png") center 20% / cover no-repeat;
 }
 
 .contact-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/contact-hero.jpg") center 20% / cover no-repeat;
+    url("../images/contact001.png") center 20% / cover no-repeat;
 }
 
 .donate-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/donate-hero.jpg") center 20% / cover no-repeat;
+    url("../images/donate001.png") center 20% / cover no-repeat;
 }
 
 /* =========================
@@ -1194,7 +1198,7 @@ header.scrolled .nav-bar {
    FOOTER
 ========================= */
 footer {
-  background: #0f2c5c;
+  background: #3f1c6a;
   color: var(--white);
   padding-top: 52px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
