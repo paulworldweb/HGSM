@@ -507,7 +507,7 @@ header.scrolled .nav-bar {
 .donate-hero-bg {
   background:
     linear-gradient(rgba(88, 28, 135, 0.58), rgba(88, 28, 135, 0.58)),
-    url("../images/donate001.png") center 20% / cover no-repeat;
+    url("../images/donate.png") center 20% / cover no-repeat;
 }
 
 /* =========================
