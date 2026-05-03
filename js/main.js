@@ -24,6 +24,29 @@ document.addEventListener("DOMContentLoaded", function () {
   const lightboxImg = document.getElementById("lightboxImg");
   const lightboxClose = document.getElementById("lightboxClose");
 
+    const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+  const mobileThemeDropdown = document.getElementById("mobileThemeDropdown");
+  const mobileThemeSwitcher = document.querySelector(".mobile-theme-switcher");
+
+  if (mobileThemeToggle && mobileThemeDropdown && mobileThemeSwitcher) {
+    mobileThemeToggle.addEventListener("click", function (event) {
+      event.stopPropagation();
+      mobileThemeSwitcher.classList.toggle("open");
+
+      const expanded = mobileThemeSwitcher.classList.contains("open");
+      mobileThemeToggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+
+    mobileThemeDropdown.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", function () {
+      mobileThemeSwitcher.classList.remove("open");
+      mobileThemeToggle.setAttribute("aria-expanded", "false");
+    });
+  }
+
   /* =========================
      HAMBURGER MENU
   ========================= */
