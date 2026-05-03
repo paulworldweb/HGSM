@@ -1429,27 +1429,50 @@ body.theme-dark .theme-option {
   }
 
   /* mobile theme block shown only on mobile */
-  .mobile-theme-switcher {
-    display: block;
-    margin-top: 18px;
-    padding-top: 16px;
-    border-top: 1px solid #e6e6e6;
-  }
+  /* mobile theme dropdown */
+.mobile-theme-switcher {
+  display: block;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #e6e6e6;
+}
 
-  .mobile-theme-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #151c2e;
-    margin-bottom: 10px;
-  }
-
-  .mobile-theme-options {
+.mobile-theme-toggle {
+  width: 100%;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: #f4f6fb;
+  color: #151c2e;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-theme-arrow {
+  font-size: 1rem;
+  transition: transform 0.25s ease;
+}
+
+.mobile-theme-switcher.open .mobile-theme-arrow {
+  transform: rotate(180deg);
+}
+
+.mobile-theme-dropdown {
+  display: none;
+  margin-top: 10px;
   flex-direction: column;
   gap: 10px;
 }
 
-.mobile-theme-options .theme-option {
+.mobile-theme-switcher.open .mobile-theme-dropdown {
+  display: flex;
+}
+
+.mobile-theme-dropdown .theme-option {
   width: 100%;
   border: none;
   background: #f4f6fb;
@@ -1462,23 +1485,22 @@ body.theme-dark .theme-option {
   opacity: 1 !important;
 }
 
-.mobile-theme-options .theme-option.active {
+.mobile-theme-dropdown .theme-option.active {
   background: #1e78c8;
   color: #ffffff !important;
 }
 
-.mobile-theme-options .theme-option:not(.active) {
-  background: #f4f6fb;
-  color: #151c2e !important;
-  opacity: 1 !important;
-}
-
-body.theme-dark .mobile-theme-options .theme-option {
+.mobile-theme-dropdown .theme-option:not(.active) {
   background: #f4f6fb;
   color: #151c2e !important;
 }
 
-body.theme-dark .mobile-theme-options .theme-option.active {
+body.theme-dark .mobile-theme-dropdown .theme-option {
+  background: #f4f6fb;
+  color: #151c2e !important;
+}
+
+body.theme-dark .mobile-theme-dropdown .theme-option.active {
   background: #1e78c8;
   color: #ffffff !important;
 }
