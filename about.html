@@ -41,8 +41,12 @@
         </ul>
 
         <div class="mobile-theme-switcher">
-          <p class="mobile-theme-title">Mode</p>
-          <div class="mobile-theme-options">
+          <button class="mobile-theme-toggle" id="mobileThemeToggle" type="button" aria-expanded="false">
+            <span>Mode</span>
+            <span class="mobile-theme-arrow">▾</span>
+          </button>
+
+          <div class="mobile-theme-dropdown" id="mobileThemeDropdown">
             <button class="theme-option active" data-theme="light">☀️ Light</button>
             <button class="theme-option" data-theme="dark">🌙 Dark</button>
             <button class="theme-option" data-theme="auto">◐ Auto</button>
