@@ -61,14 +61,14 @@ document.addEventListener("DOMContentLoaded", function () {
      HEADER SCROLL EFFECT
   ========================= */
   function handleHeaderScroll() {
-    if (!header) return;
+  if (!header) return;
 
-    if (window.innerWidth > 980 && window.scrollY > 40) {
-      header.classList.add("scrolled");
-    } else {
-      header.classList.remove("scrolled");
-    }
+  if (window.scrollY > 40) {
+    header.classList.add("scrolled");
+  } else {
+    header.classList.remove("scrolled");
   }
+}
 
   function setupHeaderScroll() {
     handleHeaderScroll();
