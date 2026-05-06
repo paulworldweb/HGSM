@@ -48,6 +48,119 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =========================
+   PRAYER REQUEST FORM
+========================= */
+const prayerRequestForm = document.getElementById("prayerRequestForm");
+const prayerFormMessage = document.getElementById("prayerFormMessage");
+
+if (prayerRequestForm) {
+  const supabaseUrl = "https://munuuangqldudtofwujl.supabase.co";
+  const supabaseKey = "sb_publishable_-TMMWPwAY-UfqIEyLUWEyw_h82Kj9_W";
+
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  prayerRequestForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const fullName = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const prayerRequest = document.getElementById("request").value.trim();
+
+    if (prayerFormMessage) {
+      prayerFormMessage.textContent = "Submitting prayer request...";
+    }
+
+    const { error } = await supabaseClient
+      .from("prayer_requests")
+      .insert([
+        {
+          full_name: fullName,
+          email: email,
+          prayer_request: prayerRequest
+        }
+      ]);
+
+    if (error) {
+      console.error("Prayer request error:", error);
+
+      if (prayerFormMessage) {
+        prayerFormMessage.textContent = "Something went wrong. Please try again.";
+        prayerFormMessage.style.color = "red";
+      }
+
+      return;
+    }
+
+    if (prayerFormMessage) {
+      prayerFormMessage.textContent = "Your prayer request was submitted successfully.";
+      prayerFormMessage.style.color = "green";
+    }
+
+    prayerRequestForm.reset();
+  });
+}
+
+/* =========================
+   CONTACT FORM
+========================= */
+const contactForm = document.getElementById("contactForm");
+const contactFormMessage = document.getElementById("contactFormMessage");
+
+if (contactForm) {
+  const supabaseUrl = "https://munuuangqldudtofwujl.supabase.co";
+  const supabaseKey = "sb_publishable_-TMMWPwAY-UfqIEyLUWEyw_h82Kj9_W";
+
+  const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+  contactForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const fullName = document.getElementById("contact-name").value.trim();
+    const email = document.getElementById("contact-email").value.trim();
+    const subject = document.getElementById("contact-subject").value.trim();
+    const message = document.getElementById("contact-message").value.trim();
+
+    if (contactFormMessage) {
+      contactFormMessage.textContent = "Sending message...";
+      contactFormMessage.style.color = "";
+    }
+
+    const { error } = await supabaseClient
+      .from("contact_messages")
+      .insert([
+        {
+          full_name: fullName,
+          email: email,
+          subject: subject,
+          message: message
+        }
+      ]);
+
+    if (error) {
+      console.log("Contact error full object:", error);
+      console.log("Contact error message:", error?.message);
+      console.log("Contact error details:", error?.details);
+      console.log("Contact error hint:", error?.hint);
+      console.error("Contact form error:", error);
+
+      if (contactFormMessage) {
+        contactFormMessage.textContent = "Something went wrong. Please try again.";
+        contactFormMessage.style.color = "red";
+      }
+
+      return;
+    }
+
+    if (contactFormMessage) {
+      contactFormMessage.textContent = "Your message was sent successfully.";
+      contactFormMessage.style.color = "green";
+    }
+
+    contactForm.reset();
+  });
+}
+
+  /* =========================
      HAMBURGER MENU
   ========================= */
   function closeMenu() {
