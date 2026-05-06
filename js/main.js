@@ -68,7 +68,8 @@ if (prayerRequestForm) {
     const prayerRequest = document.getElementById("request").value.trim();
 
     if (prayerFormMessage) {
-      prayerFormMessage.textContent = "Submitting prayer request...";
+        prayerFormMessage.textContent = "Submitting prayer request...";
+        prayerFormMessage.className = "form-status-message loading show";
     }
 
     const { error } = await supabaseClient
@@ -87,7 +88,7 @@ if (prayerRequestForm) {
 
       if (prayerFormMessage) {
         prayerFormMessage.textContent = "Something went wrong. Please try again.";
-        prayerFormMessage.style.color = "red";
+        prayerFormMessage.className = "form-status-message error show";
       }
 
       return;
@@ -95,7 +96,7 @@ if (prayerRequestForm) {
 
     if (prayerFormMessage) {
       prayerFormMessage.textContent = "Your prayer request was submitted successfully.";
-      prayerFormMessage.style.color = "green";
+      prayerFormMessage.className = "form-status-message success show";
     }
 
     prayerRequestForm.reset();
@@ -125,7 +126,7 @@ if (contactForm) {
 
     if (contactFormMessage) {
       contactFormMessage.textContent = "Sending message...";
-      contactFormMessage.style.color = "";
+      contactFormMessage.className = "form-status-message loading show";
     }
 
     const { error } = await supabaseClient
@@ -149,7 +150,7 @@ if (contactForm) {
 
       if (contactFormMessage) {
         contactFormMessage.textContent = "Something went wrong. Please try again.";
-        contactFormMessage.style.color = "red";
+        contactFormMessage.className = "form-status-message error show";
       }
 
       return;
@@ -157,7 +158,7 @@ if (contactForm) {
 
     if (contactFormMessage) {
       contactFormMessage.textContent = "Your message was sent successfully.";
-      contactFormMessage.style.color = "green";
+      contactFormMessage.className = "form-status-message success show";
     }
 
     contactForm.reset();
