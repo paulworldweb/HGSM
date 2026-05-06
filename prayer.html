@@ -9,6 +9,7 @@
     content="Submit your prayer requests. We are here to pray with you."
   />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/main.js" defer></script>
 </head>
 
@@ -31,11 +32,11 @@
 
       <nav class="site-nav">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="videos.html">Videos</a></li>
           <li><a href="events.html">Events</a></li>
-          <li><a href="prayer.html">Prayer Request</a></li>
+          <li><a href="prayer.html" class="active">Prayer Request</a></li>
           <li><a href="donate.html">Donate</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
@@ -90,26 +91,13 @@
         <div class="prayer-form-card">
           <div class="prayer-label-box">Submit a Prayer Request</div>
 
-          <form action="https://formsubmit.co/omas2shot82@gmail.com" method="POST" class="prayer-form">
-            <!-- Anti-spam honeypot -->
-            <input type="text" name="_honey" style="display: none;" />
-
-            <!-- Disable captcha -->
-            <input type="hidden" name="_captcha" value="false" />
-
-            <!-- Email subject -->
-            <input
-              type="hidden"
-              name="_subject"
-              value="New Prayer Request from Hold God Strong Ministries"
-            />
-
+          <form id="prayerRequestForm" class="prayer-form">
             <div class="form-group full-width">
               <label for="name">Full Name</label>
               <input
                 type="text"
                 id="name"
-                name="Name"
+                name="full_name"
                 required
                 placeholder="Enter your full name"
               />
@@ -121,7 +109,7 @@
                 <input
                   type="tel"
                   id="phone"
-                  name="Phone Number"
+                  name="phone"
                   placeholder="(555) 555-5555"
                 />
               </div>
@@ -131,7 +119,7 @@
                 <input
                   type="email"
                   id="email"
-                  name="Email"
+                  name="email"
                   required
                   placeholder="Enter your email"
                 />
@@ -142,12 +130,14 @@
               <label for="request">Your Prayer Request</label>
               <textarea
                 id="request"
-                name="Prayer Request"
+                name="prayer_request"
                 rows="6"
                 required
                 placeholder="How can we pray for you?"
               ></textarea>
             </div>
+
+            <p id="prayerFormMessage"></p>
 
             <button type="submit" class="btn btn-primary prayer-submit-btn">
               Submit Request
