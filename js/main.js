@@ -63,6 +63,7 @@ if (prayerRequestForm) {
     event.preventDefault();
 
     const fullName = document.getElementById("name").value.trim();
+    const phone = document.getElementById("phone").value.trim();
     const email = document.getElementById("email").value.trim();
     const prayerRequest = document.getElementById("request").value.trim();
 
@@ -75,6 +76,7 @@ if (prayerRequestForm) {
       .insert([
         {
           full_name: fullName,
+          phone: phone,
           email: email,
           prayer_request: prayerRequest
         }
@@ -117,6 +119,7 @@ if (contactForm) {
 
     const fullName = document.getElementById("contact-name").value.trim();
     const email = document.getElementById("contact-email").value.trim();
+    const phone = document.getElementById("contact-phone").value.trim();
     const subject = document.getElementById("contact-subject").value.trim();
     const message = document.getElementById("contact-message").value.trim();
 
@@ -131,6 +134,7 @@ if (contactForm) {
         {
           full_name: fullName,
           email: email,
+          phone: phone,
           subject: subject,
           message: message
         }
