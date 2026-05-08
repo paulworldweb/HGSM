@@ -25,12 +25,21 @@ document.addEventListener("DOMContentLoaded", function () {
   const messageModalClose = document.getElementById("messageModalClose");
   const messageModalOverlay = document.getElementById("messageModalOverlay");
 
+  const deleteModal = document.getElementById("deleteModal");
+  const deleteModalOverlay = document.getElementById("deleteModalOverlay");
+  const deleteModalClose = document.getElementById("deleteModalClose");
+  const deleteModalTitle = document.getElementById("deleteModalTitle");
+  const deleteModalText = document.getElementById("deleteModalText");
+  const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+  const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+
   let isLoading = false;
   let prayerRowsCache = [];
   let contactRowsCache = [];
+  let pendingDelete = null;
 
   /* =========================
-     READ / UNREAD STATE
+     READ / UNREAD
   ========================= */
   function getReadMap() {
     return JSON.parse(localStorage.getItem("adminReadMessages") || "{}");
@@ -52,6 +61,12 @@ document.addEventListener("DOMContentLoaded", function () {
   function markMessageAsRead(type, row) {
     const readMap = getReadMap();
     readMap[makeMessageKey(type, row)] = true;
+    saveReadMap(readMap);
+  }
+
+  function removeReadState(type, row) {
+    const readMap = getReadMap();
+    delete readMap[makeMessageKey(type, row)];
     saveReadMap(readMap);
   }
 
@@ -131,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* =========================
-     MODAL
+     MESSAGE MODAL
   ========================= */
   function openMessageModal(title, text) {
     if (!messageModal || !messageModalTitle || !messageModalText) return;
@@ -156,9 +171,92 @@ document.addEventListener("DOMContentLoaded", function () {
     messageModalOverlay.addEventListener("click", closeMessageModal);
   }
 
+  /* =========================
+     DELETE MODAL
+  ========================= */
+  function openDeleteModal(type, row) {
+    if (!deleteModal || !deleteModalTitle || !deleteModalText) return;
+
+    pendingDelete = { type, row };
+
+    deleteModalTitle.textContent =
+      type === "prayer" ? "Delete Prayer Request" : "Delete Contact Message";
+
+    deleteModalText.textContent =
+      type === "prayer"
+        ? `Are you sure you want to delete the prayer request from ${row.full_name || "this person"}? This action cannot be undone.`
+        : `Are you sure you want to delete the contact message from ${row.full_name || "this person"}? This action cannot be undone.`;
+
+    deleteModal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeDeleteModal() {
+    if (!deleteModal) return;
+    deleteModal.classList.add("hidden");
+    pendingDelete = null;
+    document.body.style.overflow = "";
+    if (confirmDeleteBtn) {
+      confirmDeleteBtn.disabled = false;
+      confirmDeleteBtn.textContent = "Delete";
+    }
+  }
+
+  if (deleteModalClose) {
+    deleteModalClose.addEventListener("click", closeDeleteModal);
+  }
+
+  if (deleteModalOverlay) {
+    deleteModalOverlay.addEventListener("click", closeDeleteModal);
+  }
+
+  if (cancelDeleteBtn) {
+    cancelDeleteBtn.addEventListener("click", closeDeleteModal);
+  }
+
+  async function handleDelete() {
+    if (!pendingDelete) return;
+
+    const { type, row } = pendingDelete;
+    const tableName = type === "prayer" ? "prayer_requests" : "contact_messages";
+
+    if (confirmDeleteBtn) {
+      confirmDeleteBtn.disabled = true;
+      confirmDeleteBtn.textContent = "Deleting...";
+    }
+
+    const { error } = await supabaseClient
+      .from(tableName)
+      .delete()
+      .eq("id", row.id);
+
+    if (error) {
+      console.error("Delete error:", error);
+      if (confirmDeleteBtn) {
+        confirmDeleteBtn.disabled = false;
+        confirmDeleteBtn.textContent = "Delete";
+      }
+      alert("Something went wrong while deleting. Please try again.");
+      return;
+    }
+
+    removeReadState(type, row);
+    closeDeleteModal();
+    await loadAdminData();
+  }
+
+  if (confirmDeleteBtn) {
+    confirmDeleteBtn.addEventListener("click", handleDelete);
+  }
+
   document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && messageModal && !messageModal.classList.contains("hidden")) {
-      closeMessageModal();
+    if (event.key === "Escape") {
+      if (messageModal && !messageModal.classList.contains("hidden")) {
+        closeMessageModal();
+      }
+      if (deleteModal && !deleteModal.classList.contains("hidden")) {
+        closeDeleteModal();
+      }
     }
   });
 
@@ -171,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!rows || rows.length === 0) {
       prayerRequestsTableBody.innerHTML = `
         <tr class="admin-empty-row">
-          <td colspan="5">No prayer requests yet.</td>
+          <td colspan="6">No prayer requests yet.</td>
         </tr>
       `;
       return;
@@ -197,14 +295,25 @@ document.addEventListener("DOMContentLoaded", function () {
               </button>
             </td>
             <td>${escapeHtml(formatDate(row.created_at))}</td>
+            <td>
+              <button
+                type="button"
+                class="delete-btn"
+                data-delete-index="${index}"
+                data-delete-type="prayer"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         `;
       })
       .join("");
 
-    const prayerButtons = prayerRequestsTableBody.querySelectorAll(".message-preview-btn");
+    const prayerPreviewButtons = prayerRequestsTableBody.querySelectorAll(".message-preview-btn");
+    const prayerDeleteButtons = prayerRequestsTableBody.querySelectorAll(".delete-btn");
 
-    prayerButtons.forEach(function (button) {
+    prayerPreviewButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         const index = Number(this.dataset.index);
         const selectedRow = prayerRowsCache[index];
@@ -213,6 +322,16 @@ document.addEventListener("DOMContentLoaded", function () {
         markMessageAsRead("prayer", selectedRow);
         openMessageModal("Prayer Request", selectedRow.prayer_request || "");
         renderPrayerRequests(prayerRowsCache);
+      });
+    });
+
+    prayerDeleteButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const index = Number(this.dataset.deleteIndex);
+        const selectedRow = prayerRowsCache[index];
+        if (!selectedRow) return;
+
+        openDeleteModal("prayer", selectedRow);
       });
     });
   }
@@ -226,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!rows || rows.length === 0) {
       contactMessagesTableBody.innerHTML = `
         <tr class="admin-empty-row">
-          <td colspan="6">No contact messages yet.</td>
+          <td colspan="7">No contact messages yet.</td>
         </tr>
       `;
       return;
@@ -253,14 +372,25 @@ document.addEventListener("DOMContentLoaded", function () {
               </button>
             </td>
             <td>${escapeHtml(formatDate(row.created_at))}</td>
+            <td>
+              <button
+                type="button"
+                class="delete-btn"
+                data-delete-index="${index}"
+                data-delete-type="contact"
+              >
+                Delete
+              </button>
+            </td>
           </tr>
         `;
       })
       .join("");
 
-    const contactButtons = contactMessagesTableBody.querySelectorAll(".message-preview-btn");
+    const contactPreviewButtons = contactMessagesTableBody.querySelectorAll(".message-preview-btn");
+    const contactDeleteButtons = contactMessagesTableBody.querySelectorAll(".delete-btn");
 
-    contactButtons.forEach(function (button) {
+    contactPreviewButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         const index = Number(this.dataset.index);
         const selectedRow = contactRowsCache[index];
@@ -272,6 +402,16 @@ document.addEventListener("DOMContentLoaded", function () {
           selectedRow.message || ""
         );
         renderContactMessages(contactRowsCache);
+      });
+    });
+
+    contactDeleteButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        const index = Number(this.dataset.deleteIndex);
+        const selectedRow = contactRowsCache[index];
+        if (!selectedRow) return;
+
+        openDeleteModal("contact", selectedRow);
       });
     });
   }
@@ -363,6 +503,7 @@ document.addEventListener("DOMContentLoaded", function () {
     adminLogoutBtn.addEventListener("click", async function () {
       await supabaseClient.auth.signOut();
       closeMessageModal();
+      closeDeleteModal();
       showLogin();
     });
   }
@@ -374,6 +515,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (event === "SIGNED_OUT") {
       closeMessageModal();
+      closeDeleteModal();
       showLogin();
     }
   });
