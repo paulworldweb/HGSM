@@ -41,7 +41,7 @@ body.admin-body {
   padding-top: 110px;
   background:
     linear-gradient(rgba(59, 20, 108, 0.78), rgba(73, 28, 131, 0.82)),
-    url("../images/admin-hero.jpg") center/cover no-repeat;
+    url("../images/admin.png") center/cover no-repeat;
   color: #ffffff;
 }
 
@@ -84,7 +84,7 @@ body.admin-body {
    ADMIN PAGE
 ========================= */
 .admin-page {
-  padding: 130px 20px 60px;
+  padding: 60px 20px 60px;
   min-height: 100vh;
   background: inherit;
   overflow-x: hidden;
