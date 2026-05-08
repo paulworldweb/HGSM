@@ -581,3 +581,80 @@ body.theme-dark .message-modal-close:hover {
     line-height: 1.65;
   }
 }
+
+
+.col-action {
+  width: 12%;
+}
+
+.delete-btn {
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.delete-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.delete-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-danger {
+  border: none;
+  background: #dc2626;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-danger:hover {
+  opacity: 0.92;
+}
+
+.delete-modal-content {
+  max-width: 560px;
+}
+
+.delete-modal-actions {
+  display: flex;
+  gap: 14px;
+  justify-content: flex-end;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+  .delete-modal-actions {
+    flex-direction: column;
+  }
+
+  .delete-modal-actions .btn,
+  .delete-modal-actions .btn-danger {
+    width: 100%;
+  }
+
+  .delete-btn {
+    width: 100%;
+    padding: 10px 12px;
+  }
+}
+
+body.theme-dark .delete-btn,
+body.theme-dark .btn-danger {
+  background: #ef4444;
+  color: #ffffff;
+}
