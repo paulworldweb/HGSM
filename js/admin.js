@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let contactRowsCache = [];
 
   /* =========================
-     READ / UNREAD
+     READ / UNREAD STATE
   ========================= */
   function getReadMap() {
     return JSON.parse(localStorage.getItem("adminReadMessages") || "{}");
@@ -93,6 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function setLoginLoadingState(loading) {
     if (!adminLoginForm) return;
+
     const submitBtn = adminLoginForm.querySelector('button[type="submit"]');
     if (!submitBtn) return;
 
@@ -143,7 +144,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function closeMessageModal() {
     if (!messageModal) return;
-
     messageModal.classList.add("hidden");
     document.body.style.overflow = "";
   }
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* =========================
-     RENDER
+     RENDER PRAYER REQUESTS
   ========================= */
   function renderPrayerRequests(rows) {
     if (!prayerRequestsTableBody) return;
@@ -190,8 +190,8 @@ document.addEventListener("DOMContentLoaded", function () {
               <button
                 type="button"
                 class="message-preview-btn ${readClass}"
-                data-type="prayer"
                 data-index="${index}"
+                data-type="prayer"
               >
                 ${escapeHtml(truncateText(row.prayer_request, 65))}
               </button>
@@ -202,9 +202,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .join("");
 
-    const previewButtons = prayerRequestsTableBody.querySelectorAll(".message-preview-btn");
+    const prayerButtons = prayerRequestsTableBody.querySelectorAll(".message-preview-btn");
 
-    previewButtons.forEach(function (button) {
+    prayerButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         const index = Number(this.dataset.index);
         const selectedRow = prayerRowsCache[index];
@@ -217,6 +217,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  /* =========================
+     RENDER CONTACT MESSAGES
+  ========================= */
   function renderContactMessages(rows) {
     if (!contactMessagesTableBody) return;
 
@@ -243,8 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
               <button
                 type="button"
                 class="message-preview-btn ${readClass}"
-                data-type="contact"
                 data-index="${index}"
+                data-type="contact"
               >
                 ${escapeHtml(truncateText(row.message, 65))}
               </button>
@@ -255,9 +258,9 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .join("");
 
-    const previewButtons = contactMessagesTableBody.querySelectorAll(".message-preview-btn");
+    const contactButtons = contactMessagesTableBody.querySelectorAll(".message-preview-btn");
 
-    previewButtons.forEach(function (button) {
+    contactButtons.forEach(function (button) {
       button.addEventListener("click", function () {
         const index = Number(this.dataset.index);
         const selectedRow = contactRowsCache[index];
